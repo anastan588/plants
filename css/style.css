@@ -528,6 +528,9 @@ main {
   line-height: 52px;
   color: #499a18;
 }
+.contacts_section .contacts_container .choise_block {
+  padding-top: 75px;
+}
 .contacts_section .contacts_container .choise_block .choise {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -535,9 +538,15 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 450px;
   height: 50px;
   background-color: #d6e7d2;
+  padding: 5px 35px 5px 20px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .contacts_section .contacts_container .choise_block .choise h3 {
   font-family: "Inter", sans-serif;
@@ -550,7 +559,7 @@ main {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #AEA1A1;
+  background-color: #aea1a1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -564,4 +573,35 @@ main {
 .contacts_section .contacts_container .choise_block .choise .arrow_circle .arrow {
   width: 8px;
   height: 5px;
+}
+
+.footer .footer_container {
+  padding: 40px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 125%;
+  line-height: 50px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+.footer .footer_container .text_block1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+.footer .footer_container .media_block .media_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+.footer .footer_container .media_block .media_list .media_item {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
