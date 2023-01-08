@@ -167,7 +167,7 @@ header nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 48px;
+  gap: 47px;
 }
 header nav ul li {
   cursor: pointer;
