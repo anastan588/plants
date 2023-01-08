@@ -6,6 +6,7 @@ $font_inter: "Inter", sans-serif;
 $green: #499a18;
 $orange: #e06733;
 $light_grey: #717171;
+$border_color: #e3e1d5;
 $dark_grey: #636060;
 $bg_color: #edf2ec;
 $bg_color_choise: #d6e7d2;
@@ -62,6 +63,28 @@ $container: 1220px;
   background-color: $bg_color;
 }
 
+@mixin change {
+  &:hover {
+    transition: transform 0.5s;
+    transform: scale(1.2);
+  }
+}
+
+@mixin linkshover($orange) {
+  color: $orange;
+}
+
+@mixin linksactive($green) {
+  color: $green;
+}
+
+@mixin buttonhover($orange) {
+  background-color: $orange;
+}
+
+@mixin buttonactive($green) {
+  background-color: $green;
+}
 /*mixin*/
 /*Normalize*/
 * {
@@ -163,7 +186,7 @@ h6 {
 
 header {
   background-color: $bg_color;
-  padding: 47px 0px;
+  padding: 43px 0px;
   .header_container {
     @include container($container);
     display: flex;
@@ -172,15 +195,41 @@ header {
     font-weight: 400;
     div {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      p {
+        @include change;
+        a {
+          color: $links_color;
+          &:hover {
+            @include linkshover($orange);
+          }
+          &:active {
+            @include linksactive($green);
+          }
+        }
+      }
     }
   }
   nav {
+    line-height: 50px;
     ul {
       display: flex;
       gap: 48px;
       li {
         cursor: pointer;
+        @include change;
+        a {
+          color: $links_color;
+          &:hover {
+            @include linkshover($orange);
+          }
+          &:active {
+            @include linksactive($green);
+          }
+        }
+      }
+      .home_item {
+        color: $orange;
       }
     }
   }
@@ -194,7 +243,7 @@ main {
   background-color: $bg_color;
   .welcome_container {
     @include container($container);
-    padding: 62px 0px;
+    padding: 57px 0px 60px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -202,15 +251,18 @@ main {
     color: $dark_grey;
     .leaves_block {
       max-width: 450px;
+      .leaf {
+        max-width: 450px;
+      }
     }
 
     .text_block {
-      max-width: 550px;
+      max-width: 545px;
       max-height: 340px;
       display: flex;
       flex-direction: column;
       gap: 45px;
-      h2 {
+      h1 {
         font-weight: 700;
         font-size: 281.25%;
         line-height: 50px;
@@ -223,9 +275,16 @@ main {
         font-weight: 400;
         font-size: 125%;
         line-height: 35px;
+        padding-bottom: 5px;
       }
       button {
         @include button($font_inter, $links_color, $orange, $bg_color);
+        &:hover {
+          @include buttonhover($orange);
+        }
+        &:active {
+          @include buttonactive($green);
+        }
       }
     }
   }
@@ -241,6 +300,7 @@ main {
     font-family: $font_inter;
     color: $dark_grey;
     .text_block {
+      padding-top: 10px;
       display: flex;
       flex-direction: column;
       gap: 40px;
@@ -270,14 +330,15 @@ main {
   background-color: $bg_color;
   .service_container {
     @include container($container);
-    padding: 40px 0px 120px 0px;
+    padding: 40px 0px 118px 0px;
     display: flex;
     flex-direction: column;
-    gap: 90px;
+    gap: 82px;
     .navigation_block {
       font-family: $font_inika;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 142px;
       h2 {
         max-width: 305px;
         font-weight: 400;
@@ -286,10 +347,19 @@ main {
         color: $green;
       }
       .buttons_block {
+        padding-top: 5px;
         display: flex;
-        gap: 35px;
+        gap: 39px;
         button {
           @include button2($font_inika, $orange, $bg_color);
+          &:hover {
+            @include buttonhover($orange);
+            color: $green;
+          }
+          &:active {
+            @include buttonactive($green);
+            color: $orange;
+          }
         }
       }
     }
@@ -298,9 +368,9 @@ main {
       grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 117px;
-      grid-row-gap: 57px;
+      grid-row-gap: 52px;
       .service_card {
-        border: 1px solid $light_grey;
+        border: 1px solid $border_color;
         border-radius: 18px;
         display: flex;
         flex-direction: column;
@@ -312,7 +382,6 @@ main {
           background-position: 0 0;
           background-size: 100% auto;
           background-repeat: no-repeat;
-
           .card_image {
             height: 100%;
             width: 100%;
@@ -335,7 +404,7 @@ main {
           p {
             font-size: 100%;
             color: $dark_grey;
-            padding-top: 10px;
+            padding-top: 15px;
           }
         }
       }
@@ -347,14 +416,14 @@ main {
   .prices_container {
     color: $black;
     @include container($container);
-    padding: 40px 0px 110px 0px;
+    padding: 40px 0px 120px 0px;
     display: flex;
     justify-content: space-between;
 
     .prices_block {
       display: flex;
       flex-direction: column;
-      gap: 70px;
+      gap: 59px;
       h2 {
         font-family: $font_inter;
         font-weight: 700;
@@ -365,10 +434,10 @@ main {
       .choise_block {
         display: flex;
         flex-direction: column;
-        gap: 30px;
-        border: 1px solid #e3e1d5;
+        gap: 31px;
+        border: 1px solid $border_color;
         border-radius: 20px;
-        padding: 34px 41px;
+        padding: 35px 39px 33px 41px;
         .choise {
           display: flex;
           justify-content: space-between;
@@ -391,6 +460,8 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+            @include change;
             .arrow {
               width: 8px;
               height: 5px;
@@ -404,8 +475,8 @@ main {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 40px;
-      h2 {
+      gap: 39px;
+      h3 {
         max-width: 500px;
         font-family: $font_inter;
         font-weight: 700;
@@ -424,6 +495,19 @@ main {
         font-weight: 700;
         text-align: left;
         background-color: white;
+        &:hover {
+          @include buttonhover($orange);
+          color: $green;
+        }
+        &:active {
+          @include buttonactive($green);
+          color: $orange;
+        }
+      }
+
+      .small_leafs {
+        max-width: 152px;
+        max-height: 175px;
       }
     }
   }
@@ -432,12 +516,14 @@ main {
 .contacts_section {
   background-color: $bg_color;
   .contacts_container {
-    padding-top: 60px;
+    padding-top: 52px;
     @include container($container);
     display: flex;
     justify-content: space-between;
     .text_block {
       h2 {
+        padding-top: 7px;
+        padding-left: 45px;
         font-family: $font_inika;
         font-weight: 700;
         font-size: 250%;
@@ -446,7 +532,7 @@ main {
       }
     }
     .choise_block {
-      padding-top: 75px;
+      padding-top: 95px;
       .choise {
         display: flex;
         justify-content: space-between;
@@ -472,6 +558,8 @@ main {
           display: flex;
           justify-content: center;
           align-items: center;
+          cursor: pointer;
+          @include change;
           .arrow {
             width: 8px;
             height: 5px;
@@ -495,13 +583,51 @@ main {
     .text_block1 {
       display: flex;
       gap: 20px;
+      .github {
+        @include change;
+        a {
+          color: $links_color;
+          &:hover {
+            @include linkshover($orange);
+          }
+          &:active {
+            @include linksactive($green);
+          }
+        }
+      }
+    }
+
+    .text_block2 {
+      padding-left: 17px;
+      p {
+        @include change;
+        a {
+          color: $links_color;
+          &:hover {
+            @include linkshover($orange);
+          }
+          &:active {
+            @include linksactive($green);
+          }
+        }
+      }
     }
     .media_block {
+      display: flex;
+      align-items: center;
       .media_list {
         display: flex;
+        align-items: center;
         gap: 20px;
         .media_item {
           cursor: pointer;
+          @include change;
+          .media_link {
+            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
     }
