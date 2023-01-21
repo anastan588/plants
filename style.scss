@@ -16,6 +16,7 @@ $black: #000000;
 $arrow: #d9d9d9;
 $arrowcontacts: #aea1a1;
 $tablet: 768px;
+$mobile: 380px;
 
 /*colors*/
 
@@ -38,6 +39,12 @@ $container: 1220px;
     padding-right: 50px;
   }
 
+  @media screen and (max-width: $mobile) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+
 }
 
 @mixin button($font_inter, $links_color, $orange, $bg_color) {
@@ -56,6 +63,13 @@ $container: 1220px;
   border-color: $orange;
   border-radius: 10px;
   background-color: $bg_color;
+  @media screen and (max-width: 500px) {
+    font-size: 62.5%;
+    line-height: 16px;
+    padding: 8px 16px;
+    width: 100px;
+    height: 34px;
+   }
 }
 
 @mixin button2($font_inika, $orange, $bg_color) {
@@ -73,6 +87,14 @@ $container: 1220px;
   border-color: $orange;
   border-radius: 5px;
   background-color: $bg_color;
+  @media screen and (max-width: 500px) {
+    font-size: 93.75%;
+    line-height: 20px;
+    padding: 8px 28px;
+    width: 121px;
+    height: 35px;
+   }
+
 }
 
 @mixin change {
@@ -220,6 +242,11 @@ header {
     padding-bottom: 35px;
   }
 
+  @media screen and (max-width: $mobile) {
+   padding-top: 34px;
+    padding-bottom: 34px;
+   }
+
   .header_container {
     @include container($container);
     display: flex;
@@ -230,6 +257,9 @@ header {
     div {
       display: flex;
       align-items: center;
+      @media screen and (max-width: $mobile) {
+       align-items: flex-end;
+      }
 
       p {
         @include change;
@@ -247,10 +277,13 @@ header {
         }
       }
     }
-  }
+  
 
-  nav {
+  .nav_container {
     line-height: 50px;
+    @media screen and (max-width: 750px) {
+       display: none;
+     }
 
     ul {
       display: flex;
@@ -278,8 +311,28 @@ header {
       }
     }
   }
+
+  .burger {
+    display: none;
+    @media screen and (max-width: 750px) {
+      display: block;
+      .burger_image {
+        max-width: 40px;
+        display:flex;
+        flex-direction: column;
+        gap: 6px;
+        .burger_line {
+         width: 40px;
+         height: 2px;
+         background-color: $light_grey ;
+        }
+     }
+    }
+ 
+  }
 }
 
+}
 main {
   flex: 1 1 auto;
 }
@@ -308,6 +361,11 @@ main {
       padding-bottom: 70px;
      }
 
+     @media screen and (max-width: $mobile) {
+      padding-top: 28px;
+      padding-bottom: 24px;
+      }
+
     .leaves_block {
       max-width: 450px;
      
@@ -323,8 +381,16 @@ main {
       }
       @media screen and (max-width: $tablet) {
         align-self: flex-start;
-        max-width: 280px;
+        max-width: 280px
        }
+
+       @media screen and (max-width: 750px) {
+        max-width: 250px;
+      }
+
+      @media screen and (max-width: 650px) {
+       display: none;
+      }
 
       .leaf {
         max-width: 450px;
@@ -339,6 +405,10 @@ main {
         @media screen and (max-width: $tablet) {
            max-width: 280px;
          }
+
+         @media screen and (max-width: 750px) {
+          max-width: 250px;
+        }
 
       }
     }
@@ -362,6 +432,14 @@ main {
         max-width: 340px;
       }
 
+      @media screen and (max-width: 750px) {
+        gap: 20px;
+       
+      }
+      @media screen and (max-width: 650px) {
+        max-width: 100%;
+       }
+ 
 
       h1 {
         font-weight: 700;
@@ -370,6 +448,11 @@ main {
         @media screen and (max-width: $tablet) {
           font-size: 218.75%;
         }
+
+        @media screen and (max-width: 500px) {
+          font-size: 156.25%;
+          line-height: 35px;
+         }
 
         span {
           color: $green;
@@ -406,6 +489,11 @@ main {
           margin-top:3px;
          
          }
+
+         @media screen and (max-width: $mobile) {
+          margin-top:6px;
+          
+          }
  
 
       }
@@ -432,6 +520,13 @@ main {
        gap: 70px;
     }
 
+    @media screen and (max-width: $mobile) {
+      padding-top: 30px;
+     gap: 0px;
+     padding-bottom: 25px;
+      
+      }
+
     .text_block {
       padding-top: 10px;
       display: flex;
@@ -444,6 +539,11 @@ main {
         padding-top: 0px;
         gap: 50px;
       }
+
+      @media screen and (max-width: $mobile) {
+       gap:14px;
+             
+        }
 
       h2 {
         max-width: 460px;
@@ -464,7 +564,11 @@ main {
           font-size: 218.75%;
         line-height: 46px;
         }
-
+          
+        @media screen and (max-width: 500px) {
+          font-size: 156.25%;
+          line-height: 33px;
+         }
         span {
           color: $orange;
         }
@@ -474,6 +578,11 @@ main {
         font-weight: 400;
         font-size: 125%;
         line-height: 30px;
+
+        @media screen and (max-width: 500px) {
+          font-size:93.75%;
+          line-height: 25px;
+         }
       }
     }
 
@@ -481,10 +590,22 @@ main {
       @media screen and (max-width: $tablet) {
         max-width: 250px;
     }
+    @media screen and (max-width: $mobile) {
+      max-width: 150px;
+            
+       }
+
      .flower {
       @media screen and (max-width: $tablet) {
         width: 250px;
      }
+      
+     @media screen and (max-width: $mobile) {
+      max-width: 150px;
+            
+       }
+
+
     }
   }
 }
@@ -505,6 +626,13 @@ main {
       padding-bottom: 70px;
        
     }
+
+    @media screen and (max-width: $mobile) {
+      padding-top: 30px;
+     gap: 39px;
+     padding-bottom: 24px;
+      
+      }
 
     .navigation_block {
       font-family: $font_inika;
@@ -528,6 +656,12 @@ main {
           font-size: 218.75%;
           line-height: 46px; 
         }
+
+        @media screen and (max-width: 500px) {
+          font-size: 156.25%;
+          line-height: 33px;
+          max-width: 187px;
+         }
       }
 
       .buttons_block {
@@ -538,6 +672,17 @@ main {
         @media screen and (max-width: $tablet) {
           padding-top: 0px;
          }
+
+         @media screen and (max-width: 750px) {
+        flex-wrap: wrap;
+        gap: 10px;
+        
+        }
+
+        @media screen and (max-width: 500px) {
+           row-gap: 9px;
+           
+          }
 
         button {
           @include button2($font_inika, $orange, $bg_color);
@@ -562,7 +707,7 @@ main {
       grid-row-gap: 52px;
 
       @media screen and (max-width: 1100px) {
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr;
       }
 
@@ -571,7 +716,23 @@ main {
         grid-row-gap: 37px;
          
       }
+      @media screen and (max-width: 650px) {
+        grid-column-gap: 50px;
+        grid-row-gap: 37px;
+         
+      }
 
+     @media screen and (max-width: 500px) {
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-columns: 1fr ;
+       }
+
+       @media screen and (max-width: $mobile) {
+        padding-left: 25px;
+        padding-right: 25px;
+        grid-row-gap: 34px;
+        
+        }
 
       .service_card {
         border: 1px solid $border_color;
@@ -660,6 +821,18 @@ main {
       padding-top: 38px;
       padding-bottom: 88px;
      }
+     @media screen and (max-width: 750px) {
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media screen and (max-width: $mobile) {
+      padding-top: 25px;
+      padding-bottom: 40px;
+      
+      }
+
+
     .prices_block {
       display: flex;
       flex-direction: column;
@@ -667,6 +840,11 @@ main {
       @media screen and (max-width: $tablet) {
         gap: 57px;
        }
+       @media screen and (max-width: $mobile) {
+        gap: 37px;
+               
+        }
+
       h2 {
         font-family: $font_inter;
         font-weight: 700;
@@ -677,6 +855,16 @@ main {
           line-height: 42px;
           padding-left: 13px;
          }
+
+         @media screen and (max-width: 750px) {
+          text-align: center;
+        }
+        @media screen and (max-width: 500px) {
+          font-size: 156.25%;
+          line-height: 30px;
+          padding-left: 0px;
+         }
+
       }
 
       .choise_block {
@@ -686,6 +874,12 @@ main {
         border: 1px solid $border_color;
         border-radius: 20px;
         padding: 35px 39px 33px 41px;
+
+        @media screen and (max-width: $mobile) {
+          padding: 28px 22px;
+          gap: 14px;
+                  
+           }
         
         .choise {
           display: flex;
@@ -695,12 +889,22 @@ main {
           background-color: $bg_color;
           border-radius: 20px;
           padding: 16px 40px;
+          @media screen and (max-width: $mobile) {
+           width: 180px;
+           padding: 16px 40px 16px 29px;   
+            }
+    
 
           h3 {
             font-family: $font_inter;
             font-weight: 700;
             font-size: 125%;
             line-height: 20px;
+
+            @media screen and (max-width: 500px) {
+              font-size: 93.75%;
+              
+             }
           }
 
           .arrow_circle {
@@ -713,6 +917,10 @@ main {
             align-items: center;
             cursor: pointer;
             @include change;
+            @media screen and (max-width: $mobile) {
+              align-self: center;
+              margin-top: 3px;
+               }
 
             .arrow {
               width: 8px;
@@ -728,14 +936,28 @@ main {
        padding-top: 102px;
         
        }
+       @media screen and (max-width: 750px) {
+        padding-top: 19px;
+      }
+      
+
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       gap: 39px;
       @media screen and (max-width: $tablet) {
         gap: 25px;
+        align-items: center;
          
         }
+
+        @media screen and (max-width: $mobile) {
+          padding-top: 0px;
+         max-width: 230px;
+         gap: 19px;
+          
+          }
+
       h3 {
         max-width: 500px;
         font-family: $font_inter;
@@ -750,6 +972,15 @@ main {
           
          }
 
+         @media screen and (max-width: 750px) {
+          text-align: center;
+        }
+       
+        @media screen and (max-width: 500px) {
+          font-size: 125%;
+         
+         }
+
         span {
           color: $green;
         }
@@ -761,6 +992,11 @@ main {
         font-weight: 700;
         text-align: left;
         background-color: white;
+
+        @media screen and (max-width: 500px) {
+          padding: 8px 22px;
+         
+         }
 
         &:hover {
           @include buttonhover($orange, $white);
@@ -778,6 +1014,10 @@ main {
         max-height: 175px;
         @media screen and (max-width: $tablet) {
           margin-top: 15px;
+          @media screen and (max-width: $mobile) {
+            display: none;
+            
+            }
           
          }
       }
@@ -806,12 +1046,27 @@ main {
       gap: 105px;
     }
 
+
+    @media screen and (max-width: $mobile) {
+      padding-top: 25px;
+      gap: 80px;
+      }
     .contacts_image {
       @media screen and (max-width: $tablet) {
         max-height: 248px;
         margin-top: 145px;
         margin-left: 20px;
       }
+
+      @media screen and (max-width: 500px) {
+        margin-top: 0px; 
+      }
+
+      @media screen and (max-width: $mobile) {
+        max-height: 124.25px;
+        margin-top: 53px; 
+        margin-left: -5px;
+        }
 
     }
 
@@ -833,6 +1088,14 @@ main {
           line-height: 40px;
           padding-left: 0px;
         }
+
+        @media screen and (max-width: 500px) {
+          font-size: 156.25%;
+          line-height: 33px;
+          
+        }
+
+        
       }
     }
 
@@ -860,7 +1123,16 @@ main {
         @media screen and (max-width: $tablet) {
           width: 450px;
         }
-  
+        
+        @media screen and (max-width: 500px) {
+         max-width: 350px;
+          
+        }
+
+        @media screen and (max-width: $mobile) {
+          max-width: 300px;
+          padding-right: 23px;
+          }
 
         h3 {
           font-family: $font_inter;
@@ -911,6 +1183,12 @@ main {
       padding-bottom: 18px;
       line-height: 30px;
     }
+
+    @media screen and (max-width: $mobile) {
+      padding-top:19px;
+      padding-bottom: 7px;
+     
+      }
 
     .text_block1 {
       display: flex;
@@ -963,6 +1241,11 @@ main {
       @media screen and (max-width: $tablet) {
        padding-top: 11px;
       }
+
+      @media screen and (max-width: $mobile) {
+        padding-top:0px;
+        
+        }
 
       .media_list {
         display: flex;
