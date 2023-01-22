@@ -729,7 +729,7 @@ main {
     @media screen and (max-width: $mobile) {
       padding-top: 30px;
      gap: 39px;
-     padding-bottom: 24px;
+     padding-bottom: 27px;
       
       }
 
@@ -829,7 +829,7 @@ main {
        @media screen and (max-width: $mobile) {
         padding-left: 25px;
         padding-right: 25px;
-        grid-row-gap: 34px;
+        grid-row-gap: 33.5px;
         
         }
 
@@ -844,7 +844,10 @@ main {
         @media screen and (max-width: $tablet) {
           padding-bottom: 20px;
          }
-
+         @media screen and (max-width: $mobile) {
+          padding-bottom: 20px;
+                   
+          }
 
         .image_block {
           position: relative;
@@ -1046,15 +1049,18 @@ main {
       gap: 39px;
       @media screen and (max-width: $tablet) {
         gap: 25px;
-        align-items: center;
-         
+               
+        }
+
+        @media screen and (max-width: 750px) {
+          align-items: center;
         }
 
         @media screen and (max-width: $mobile) {
           padding-top: 0px;
          max-width: 230px;
          gap: 19px;
-          
+         
           }
 
       h3 {

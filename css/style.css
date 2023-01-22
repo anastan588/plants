@@ -794,7 +794,7 @@ main {
   .service_section .service_container {
     padding-top: 30px;
     gap: 39px;
-    padding-bottom: 24px;
+    padding-bottom: 27px;
   }
 }
 .service_section .service_container .navigation_block {
@@ -931,7 +931,7 @@ main {
   .service_section .service_container .services_block {
     padding-left: 25px;
     padding-right: 25px;
-    grid-row-gap: 34px;
+    grid-row-gap: 33.5px;
   }
 }
 .service_section .service_container .services_block .service_card {
@@ -949,6 +949,11 @@ main {
   padding-bottom: 38px;
 }
 @media screen and (max-width: 768px) {
+  .service_section .service_container .services_block .service_card {
+    padding-bottom: 20px;
+  }
+}
+@media screen and (max-width: 380px) {
   .service_section .service_container .services_block .service_card {
     padding-bottom: 20px;
   }
@@ -1221,6 +1226,10 @@ main {
 @media screen and (max-width: 768px) {
   .prices_section .prices_container .text_block {
     gap: 25px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .prices_section .prices_container .text_block {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
