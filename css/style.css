@@ -264,6 +264,13 @@ header .header_container .burger {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 6px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  header .header_container .burger .burger_image:hover {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
   header .header_container .burger .burger_image .burger_line {
     width: 40px;

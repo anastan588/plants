@@ -336,6 +336,12 @@ header {
         display:flex;
         flex-direction: column;
         gap: 6px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        &:hover {
+          transform: scale(1.2);
+  
+        }
         .burger_line {
          width: 40px;
          height: 2px;
