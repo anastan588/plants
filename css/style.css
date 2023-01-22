@@ -430,6 +430,7 @@ main {
 }
 @media screen and (max-width: 768px) {
   .welcome_section .welcome_container {
+    padding-top: 38px;
     padding-bottom: 70px;
   }
 }
@@ -463,6 +464,7 @@ main {
     -ms-flex-item-align: start;
         align-self: flex-start;
     max-width: 280px;
+    max-height: 254px;
   }
 }
 @media screen and (max-width: 750px) {
@@ -566,6 +568,12 @@ main {
     font-size: 100%;
     line-height: 25px;
     padding-bottom: 0px;
+    padding-left: 3.5px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .welcome_section .welcome_container .text_block p {
+    padding-left: 0px;
   }
 }
 .welcome_section .welcome_container .text_block button {
@@ -604,7 +612,7 @@ main {
 }
 @media screen and (max-width: 768px) {
   .welcome_section .welcome_container .text_block button {
-    margin-top: 3px;
+    margin-top: 5px;
   }
 }
 @media screen and (max-width: 380px) {
@@ -1582,6 +1590,11 @@ main {
   display: -ms-flexbox;
   display: flex;
   gap: 20px;
+}
+@media screen and (max-width: 380px) {
+  .footer .footer_container .text_block1 {
+    gap: 23px;
+  }
 }
 .footer .footer_container .text_block1 .github:hover {
   -webkit-transition: -webkit-transform 0.5s;
