@@ -272,9 +272,9 @@ header {
     div {
       display: flex;
       align-items: center;
-      @media screen and (max-width: $mobile) {
-       align-items: flex-end;
-      }
+      @media screen and (max-width: 750px) {
+        align-items: flex-end;
+       }
 
       p {
         @include change;
@@ -351,7 +351,7 @@ header {
       top:0;
       right: -100%;
       width: 100%;
-      padding: 20px 20px 20px 20px;
+      padding: 20px 30px 20px 30px;
       background-color: $burger-color;
       border-radius: 10px;
       transition: all 1s ease;
