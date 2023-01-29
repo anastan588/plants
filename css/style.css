@@ -133,6 +133,11 @@ h6 {
   filter: blur(10px);
 }
 
+.active {
+  background-color: #e06733;
+  color: white;
+}
+
 header {
   background-color: #edf2ec;
   padding: 43px 0px;

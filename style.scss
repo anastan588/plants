@@ -253,6 +253,11 @@ h6 {
    filter:blur(10px);
  }
 
+ .active {
+  background-color: $orange;
+  color: $white;
+}
+
 
 header {
   background-color: $bg_color;
