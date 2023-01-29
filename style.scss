@@ -15,10 +15,10 @@ $links_color: #010201;
 $black: #000000;
 $arrow: #d9d9d9;
 $arrowcontacts: #aea1a1;
-$burger-color: #C1E698;
+$burger-color: #c1e698;
 $tablet: 768px;
 $mobile: 380px;
-$overlay_color:rgba(0, 0, 0, 0.5);
+$overlay_color: rgba(0, 0, 0, 0.5);
 
 /*colors*/
 
@@ -45,8 +45,6 @@ $container: 1220px;
     padding-left: 25px;
     padding-right: 25px;
   }
-
-
 }
 
 @mixin button($font_inter, $links_color, $orange, $bg_color) {
@@ -71,7 +69,7 @@ $container: 1220px;
     padding: 8px 16px;
     width: 100px;
     height: 34px;
-   }
+  }
 }
 
 @mixin button2($font_inika, $orange, $bg_color) {
@@ -95,8 +93,7 @@ $container: 1220px;
     padding: 8px 28px;
     width: 121px;
     height: 35px;
-   }
-
+  }
 }
 
 @mixin change {
@@ -239,18 +236,32 @@ h6 {
 .overlay {
   display: none;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
-height: 100%;
+  height: 100%;
   width: 100%;
- background-color: $overlay_color;
- z-index: 2;
+  background-color: $overlay_color;
+  z-index: 2;
 }
+
+.service_focus {
+  transform: scale(1.05);
+   background-color: $burger-color;
+ }
+
+ .service_nonefocus {
+   filter:blur(10px);
+ }
+
+ .active {
+  background-color: $orange;
+  color: $white;
+}
+
 
 header {
   background-color: $bg_color;
   padding: 43px 0px;
- 
 
   @media screen and (max-width: $tablet) {
     padding-top: 35px;
@@ -258,9 +269,9 @@ header {
   }
 
   @media screen and (max-width: $mobile) {
-   padding-top: 34px;
+    padding-top: 34px;
     padding-bottom: 34px;
-   }
+  }
 
   .header_container {
     @include container($container);
@@ -274,7 +285,7 @@ header {
       align-items: center;
       @media screen and (max-width: 750px) {
         align-items: flex-end;
-       }
+      }
 
       p {
         @include change;
@@ -292,151 +303,138 @@ header {
         }
       }
     }
-  
 
-  .nav_container {
-    line-height: 50px;
-    @media screen and (max-width: 750px) {
-       display: none;
-     }
-
-    ul {
-      display: flex;
-      gap: 47px;
-
-      li {
-        cursor: pointer;
-        @include change;
-
-        a {
-          color: $links_color;
-
-          &:hover {
-            @include linkshover($orange);
-          }
-
-          &:active {
-            @include linksactive($green);
-          }
-        }
+    .nav_container {
+      line-height: 50px;
+      @media screen and (max-width: 750px) {
+        display: none;
       }
 
-      .home_item {
-        color: $orange;
+      ul {
+        display: flex;
+        gap: 47px;
+
+        li {
+          cursor: pointer;
+          @include change;
+
+          a {
+            color: $links_color;
+
+            &:hover {
+              @include linkshover($orange);
+            }
+
+            &:active {
+              @include linksactive($green);
+            }
+          }
+        }
+
+        .home_item {
+          color: $orange;
+        }
       }
     }
-  }
 
-  .burger {
-    display: none;
-    @media screen and (max-width: 750px) {
-      display: block;
-      .burger_image {
-        max-width: 40px;
-        display:flex;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-        transition: all 0.5s ease;
-        &:hover {
-          transform: scale(1.2);
-  
-        }
-        .burger_line {
-         width: 40px;
-         height: 2px;
-         background-color: $light_grey ;
-        }
-     }
-     
-    .burger_menu {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      position: absolute;
-      top:0;
-      right: -100%;
-      width: 100%;
-      padding: 20px 30px 20px 30px;
-      background-color: $burger-color;
-      border-radius: 10px;
-      transition: all 1s ease;
-      z-index: 3;
-      .burger_close {
-        box-sizing: border-box;
-        padding: 3px;
-        display:flex;
-        flex-direction: column;
-        gap: 30px;
-        position: relative;
-        border: 1px solid $light_grey;
-        border-radius: 5px;
-        transition: all 0.5s ease;
-        cursor: pointer;
-        &:hover {
-          transform: scale(1.2);
-          background-color: $bg_color;
-        }
-        .close_line {
-          
-          width: 40px;
-          height: 2px;
-          background-color: $light_grey ;
+    .burger {
+      display: none;
+      @media screen and (max-width: 750px) {
+        display: block;
+        .burger_image {
+          max-width: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          cursor: pointer;
           transition: all 0.5s ease;
-        }
-        .line-one {
-          position: relative;
-          transform: rotate(45deg);
-          top:15px;
-        }
-        .line-two {
-          position: relative;
-          transform: rotate(-45deg);
-          top:-16px;
-
-        }
-      }
-      .burger_nav {
-         
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
-      li {
-        cursor: pointer;
-        @include change;
-
-        a {
-          color: $links_color;
-
           &:hover {
-            @include linkshover($orange);
+            transform: scale(1.2);
           }
+          .burger_line {
+            width: 40px;
+            height: 2px;
+            background-color: $light_grey;
+          }
+        }
 
-          &:active {
-            @include linksactive($green);
+        .burger_menu {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          position: absolute;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          padding: 20px 30px 20px 30px;
+          background-color: $burger-color;
+          border-radius: 10px;
+          transition: all 1s ease;
+          z-index: 3;
+          .burger_close {
+            box-sizing: border-box;
+            padding: 3px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            border: 1px solid $light_grey;
+            border-radius: 5px;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            &:hover {
+              transform: scale(1.2);
+              background-color: $bg_color;
+            }
+            .close_line {
+              width: 40px;
+              height: 2px;
+              background-color: $light_grey;
+              transition: all 0.5s ease;
+            }
+            .line-one {
+              position: relative;
+              transform: rotate(45deg);
+              top: 15px;
+            }
+            .line-two {
+              position: relative;
+              transform: rotate(-45deg);
+              top: -16px;
+            }
+          }
+          .burger_nav {
+            ul {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+
+              li {
+                cursor: pointer;
+                @include change;
+
+                a {
+                  color: $links_color;
+
+                  &:hover {
+                    @include linkshover($orange);
+                  }
+
+                  &:active {
+                    @include linksactive($green);
+                  }
+                }
+              }
+
+              .home_item {
+                color: $orange;
+              }
+            }
           }
         }
       }
-
-      .home_item {
-        color: $orange;
-      }
     }
-
-      }
-    }
-    
-
-   
-    
-   
-    }
- 
   }
-}
-
 }
 main {
   flex: 1 1 auto;
@@ -456,25 +454,24 @@ main {
 
     @media screen and (max-width: 900px) {
       padding-top: 40px;
-     }
+    }
 
     @media screen and (max-width: 1100px) {
-     gap:10px;
+      gap: 10px;
     }
 
     @media screen and (max-width: $tablet) {
       padding-top: 38px;
       padding-bottom: 70px;
-     }
+    }
 
-     @media screen and (max-width: $mobile) {
+    @media screen and (max-width: $mobile) {
       padding-top: 28px;
       padding-bottom: 24px;
-      }
+    }
 
     .leaves_block {
       max-width: 450px;
-     
 
       @media screen and (max-width: 1100px) {
         order: 2;
@@ -489,14 +486,14 @@ main {
         align-self: flex-start;
         max-width: 280px;
         max-height: 254px;
-       }
+      }
 
-       @media screen and (max-width: 750px) {
+      @media screen and (max-width: 750px) {
         max-width: 250px;
       }
 
       @media screen and (max-width: 650px) {
-       display: none;
+        display: none;
       }
 
       .leaf {
@@ -510,13 +507,12 @@ main {
         }
 
         @media screen and (max-width: $tablet) {
-           max-width: 280px;
-         }
-
-         @media screen and (max-width: 750px) {
-          max-width: 250px;
+          max-width: 280px;
         }
 
+        @media screen and (max-width: 750px) {
+          max-width: 250px;
+        }
       }
     }
 
@@ -541,12 +537,10 @@ main {
 
       @media screen and (max-width: 750px) {
         gap: 20px;
-       
       }
       @media screen and (max-width: 650px) {
         max-width: 100%;
-       }
- 
+      }
 
       h1 {
         font-weight: 700;
@@ -559,7 +553,7 @@ main {
         @media screen and (max-width: 500px) {
           font-size: 156.25%;
           line-height: 35px;
-         }
+        }
 
         span {
           color: $green;
@@ -572,43 +566,34 @@ main {
         line-height: 35px;
         padding-bottom: 5px;
         @media screen and (max-width: $tablet) {
-         font-size: 100%;
-        line-height:25px;
-        padding-bottom: 0px;
-        padding-left: 3.5px;
-        
+          font-size: 100%;
+          line-height: 25px;
+          padding-bottom: 0px;
+          padding-left: 3.5px;
         }
 
         @media screen and (max-width: $mobile) {
           padding-left: 0px;
-          
-          }
-
+        }
       }
 
       button {
-        
         @include button($font_inter, $links_color, $orange, $bg_color);
 
         &:hover {
           @include buttonhover($orange, $white);
-
         }
 
         &:active {
           @include buttonactive($green, $white);
         }
         @media screen and (max-width: $tablet) {
-          margin-top:5px;
-         
-         }
+          margin-top: 5px;
+        }
 
-         @media screen and (max-width: $mobile) {
-          margin-top:6px;
-          
-          }
- 
-
+        @media screen and (max-width: $mobile) {
+          margin-top: 6px;
+        }
       }
     }
   }
@@ -630,15 +615,14 @@ main {
 
     @media screen and (max-width: $tablet) {
       padding-top: 40px;
-       gap: 70px;
+      gap: 70px;
     }
 
     @media screen and (max-width: $mobile) {
       padding-top: 30px;
-     gap: 0px;
-     padding-bottom: 25px;
-      
-      }
+      gap: 0px;
+      padding-bottom: 25px;
+    }
 
     .text_block {
       padding-top: 10px;
@@ -646,7 +630,7 @@ main {
       flex-direction: column;
       gap: 40px;
       max-width: 605px;
-      
+
       @media screen and (max-width: $tablet) {
         max-width: 668px;
         padding-top: 0px;
@@ -654,9 +638,8 @@ main {
       }
 
       @media screen and (max-width: $mobile) {
-       gap:14px;
-             
-        }
+        gap: 14px;
+      }
 
       h2 {
         max-width: 460px;
@@ -675,13 +658,13 @@ main {
           max-width: 423px;
           align-self: center;
           font-size: 218.75%;
-        line-height: 46px;
+          line-height: 46px;
         }
-          
+
         @media screen and (max-width: 500px) {
           font-size: 156.25%;
           line-height: 33px;
-         }
+        }
         span {
           color: $orange;
         }
@@ -693,38 +676,35 @@ main {
         line-height: 30px;
 
         @media screen and (max-width: 500px) {
-          font-size:93.75%;
+          font-size: 93.75%;
           line-height: 25px;
-         }
+        }
       }
     }
 
     .flower_block {
       @media screen and (max-width: $tablet) {
         max-width: 250px;
-    }
-    @media screen and (max-width: $mobile) {
-      max-width: 150px;
-            
-       }
+      }
+      @media screen and (max-width: $mobile) {
+        max-width: 150px;
+      }
 
-     .flower {
-      @media screen and (max-width: $tablet) {
-        width: 250px;
-     }
-      
-     @media screen and (max-width: $mobile) {
-      max-width: 150px;
-            
-       }
+      .flower {
+        @media screen and (max-width: $tablet) {
+          width: 250px;
+        }
 
-
+        @media screen and (max-width: $mobile) {
+          max-width: 150px;
+        }
+      }
     }
   }
 }
-}
 
 .service_section {
+ 
   background-color: $bg_color;
 
   .service_container {
@@ -737,15 +717,13 @@ main {
       padding-top: 60px;
       gap: 42px;
       padding-bottom: 70px;
-       
     }
 
     @media screen and (max-width: $mobile) {
       padding-top: 30px;
-     gap: 39px;
-     padding-bottom: 27px;
-      
-      }
+      gap: 39px;
+      padding-bottom: 27px;
+    }
 
     .navigation_block {
       font-family: $font_inika;
@@ -767,14 +745,14 @@ main {
         color: $green;
         @media screen and (max-width: $tablet) {
           font-size: 218.75%;
-          line-height: 46px; 
+          line-height: 46px;
         }
 
         @media screen and (max-width: 500px) {
           font-size: 156.25%;
           line-height: 33px;
           max-width: 187px;
-         }
+        }
       }
 
       .buttons_block {
@@ -784,36 +762,38 @@ main {
 
         @media screen and (max-width: $tablet) {
           padding-top: 0px;
-         }
+        }
 
-         @media screen and (max-width: 750px) {
-        flex-wrap: wrap;
-        gap: 10px;
-        
+        @media screen and (max-width: 750px) {
+          flex-wrap: wrap;
+          gap: 10px;
         }
 
         @media screen and (max-width: 500px) {
-           row-gap: 9px;
-           
-          }
+          row-gap: 9px;
+        }
 
         button {
-          @include button2($font_inika, $orange, $bg_color);
+         @include button2($font_inika, $orange, $bg_color);
 
-          &:hover {
+         &:hover {
             @include buttonhover($orange, $white);
           }
 
           &:active {
             @include buttonactive($green, $white);
+          }
 
+          &:focus {
+            background-color: $orange;
+            color: $white;
           }
         }
       }
     }
 
     .services_block {
-      display: grid;
+     display: grid;
       grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 117px;
@@ -827,25 +807,22 @@ main {
       @media screen and (max-width: $tablet) {
         grid-column-gap: 107px;
         grid-row-gap: 37px;
-         
       }
       @media screen and (max-width: 650px) {
         grid-column-gap: 50px;
         grid-row-gap: 37px;
-         
       }
 
-     @media screen and (max-width: 500px) {
+      @media screen and (max-width: 500px) {
         grid-template-rows: repeat(6, 1fr);
-        grid-template-columns: 1fr ;
-       }
+        grid-template-columns: 1fr;
+      }
 
-       @media screen and (max-width: $mobile) {
+      @media screen and (max-width: $mobile) {
         padding-left: 25px;
         padding-right: 25px;
         grid-row-gap: 33.5px;
-        
-        }
+      }
 
       .service_card {
         border: 1px solid $border_color;
@@ -855,13 +832,15 @@ main {
         gap: 11px;
         position: relative;
         padding-bottom: 38px;
+        transition: all 0.5s ease;
         @media screen and (max-width: $tablet) {
           padding-bottom: 20px;
-         }
-         @media screen and (max-width: $mobile) {
+        }
+        @media screen and (max-width: $mobile) {
           padding-bottom: 20px;
-                   
-          }
+        }
+
+       
 
         .image_block {
           position: relative;
@@ -877,54 +856,49 @@ main {
             object-fit: cover;
           }
           .mobile {
-            display:none;
+            display: none;
             @media screen and (max-width: $tablet) {
-              display:block;
-                
-             }
+              display: block;
+            }
           }
 
           .desktop {
             @media screen and (max-width: $tablet) {
-             display:none;
-               
+              display: none;
             }
           }
-                   
+        }
       }
+
+      .card_text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: $font_inter;
+        line-height: 20px;
+        @media screen and (max-width: $tablet) {
         }
 
-        .card_text {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          font-family: $font_inter;
-          line-height: 20px;
+        h3 {
+          font-weight: 700;
+          font-size: 125%;
+          color: $orange;
+        }
+
+        p {
+          font-size: 100%;
+          color: $dark_grey;
+          padding-top: 15px;
           @media screen and (max-width: $tablet) {
-                     
-            }
-
-          h3 {
-            font-weight: 700;
-            font-size: 125%;
-            color: $orange;
-          }
-
-          p {
-            font-size: 100%;
-            color: $dark_grey;
-            padding-top: 15px;
-            @media screen and (max-width: $tablet) {
-              padding-top: 10px;
-             max-width: 203px;  
-             text-align: center;              
-             }
+            padding-top: 10px;
+            max-width: 203px;
+            text-align: center;
           }
         }
       }
     }
   }
-
+}
 
 .prices_section {
   .prices_container {
@@ -936,8 +910,8 @@ main {
     @media screen and (max-width: $tablet) {
       padding-top: 38px;
       padding-bottom: 88px;
-     }
-     @media screen and (max-width: 750px) {
+    }
+    @media screen and (max-width: 750px) {
       gap: 20px;
       flex-direction: column;
       align-items: center;
@@ -945,9 +919,7 @@ main {
     @media screen and (max-width: $mobile) {
       padding-top: 25px;
       padding-bottom: 40px;
-      
-      }
-
+    }
 
     .prices_block {
       display: flex;
@@ -955,11 +927,10 @@ main {
       gap: 59px;
       @media screen and (max-width: $tablet) {
         gap: 57px;
-       }
-       @media screen and (max-width: $mobile) {
+      }
+      @media screen and (max-width: $mobile) {
         gap: 37px;
-               
-        }
+      }
 
       h2 {
         font-family: $font_inter;
@@ -970,17 +941,16 @@ main {
           font-size: 218.75%;
           line-height: 42px;
           padding-left: 13px;
-         }
+        }
 
-         @media screen and (max-width: 750px) {
+        @media screen and (max-width: 750px) {
           text-align: center;
         }
         @media screen and (max-width: 500px) {
           font-size: 156.25%;
           line-height: 30px;
           padding-left: 0px;
-         }
-
+        }
       }
 
       .choise_block {
@@ -994,9 +964,8 @@ main {
         @media screen and (max-width: $mobile) {
           padding: 28px 22px;
           gap: 14px;
-                  
-           }
-        
+        }
+
         .choise {
           display: flex;
           justify-content: space-between;
@@ -1006,10 +975,9 @@ main {
           border-radius: 20px;
           padding: 16px 40px;
           @media screen and (max-width: $mobile) {
-           width: 180px;
-           padding: 16px 40px 16px 29px;   
-            }
-    
+            width: 180px;
+            padding: 16px 40px 16px 29px;
+          }
 
           h3 {
             font-family: $font_inter;
@@ -1019,8 +987,7 @@ main {
 
             @media screen and (max-width: 500px) {
               font-size: 93.75%;
-              
-             }
+            }
           }
 
           .arrow_circle {
@@ -1036,7 +1003,7 @@ main {
             @media screen and (max-width: $mobile) {
               align-self: center;
               margin-top: 3px;
-               }
+            }
 
             .arrow {
               width: 8px;
@@ -1049,13 +1016,11 @@ main {
 
     .text_block {
       @media screen and (max-width: $tablet) {
-       padding-top: 102px;
-        
-       }
-       @media screen and (max-width: 750px) {
+        padding-top: 102px;
+      }
+      @media screen and (max-width: 750px) {
         padding-top: 19px;
       }
-      
 
       display: flex;
       flex-direction: column;
@@ -1063,19 +1028,17 @@ main {
       gap: 39px;
       @media screen and (max-width: $tablet) {
         gap: 25px;
-               
-        }
+      }
 
-        @media screen and (max-width: 750px) {
-          align-items: center;
-        }
+      @media screen and (max-width: 750px) {
+        align-items: center;
+      }
 
-        @media screen and (max-width: $mobile) {
-          padding-top: 0px;
-         max-width: 230px;
-         gap: 19px;
-         
-          }
+      @media screen and (max-width: $mobile) {
+        padding-top: 0px;
+        max-width: 230px;
+        gap: 19px;
+      }
 
       h3 {
         max-width: 500px;
@@ -1088,17 +1051,15 @@ main {
         @media screen and (max-width: $tablet) {
           font-size: 156.25%;
           line-height: 35px;
-          
-         }
+        }
 
-         @media screen and (max-width: 750px) {
+        @media screen and (max-width: 750px) {
           text-align: center;
         }
-       
+
         @media screen and (max-width: 500px) {
           font-size: 125%;
-         
-         }
+        }
 
         span {
           color: $green;
@@ -1114,17 +1075,14 @@ main {
 
         @media screen and (max-width: 500px) {
           padding: 8px 22px;
-         
-         }
+        }
 
         &:hover {
           @include buttonhover($orange, $white);
-
         }
 
         &:active {
           @include buttonactive($green, $white);
-
         }
       }
 
@@ -1135,10 +1093,8 @@ main {
           margin-top: 15px;
           @media screen and (max-width: $mobile) {
             display: none;
-            
-            }
-          
-         }
+          }
+        }
       }
     }
   }
@@ -1157,7 +1113,6 @@ main {
       flex-direction: column-reverse;
       align-items: center;
       gap: 50px;
-
     }
 
     @media screen and (max-width: $tablet) {
@@ -1165,11 +1120,10 @@ main {
       gap: 105px;
     }
 
-
     @media screen and (max-width: $mobile) {
       padding-top: 25px;
       gap: 80px;
-      }
+    }
     .contacts_image {
       @media screen and (max-width: $tablet) {
         max-height: 248px;
@@ -1178,15 +1132,14 @@ main {
       }
 
       @media screen and (max-width: 500px) {
-        margin-top: 0px; 
+        margin-top: 0px;
       }
 
       @media screen and (max-width: $mobile) {
         max-height: 124.25px;
-        margin-top: 53px; 
+        margin-top: 53px;
         margin-left: -5px;
-        }
-
+      }
     }
 
     .text_block {
@@ -1211,10 +1164,7 @@ main {
         @media screen and (max-width: 500px) {
           font-size: 156.25%;
           line-height: 33px;
-          
         }
-
-        
       }
     }
 
@@ -1242,16 +1192,15 @@ main {
         @media screen and (max-width: $tablet) {
           width: 450px;
         }
-        
+
         @media screen and (max-width: 500px) {
-         max-width: 350px;
-          
+          max-width: 350px;
         }
 
         @media screen and (max-width: $mobile) {
           max-width: 300px;
           padding-right: 23px;
-          }
+        }
 
         h3 {
           font-family: $font_inter;
@@ -1304,10 +1253,9 @@ main {
     }
 
     @media screen and (max-width: $mobile) {
-      padding-top:19px;
+      padding-top: 19px;
       padding-bottom: 7px;
-     
-      }
+    }
 
     .text_block1 {
       display: flex;
@@ -1315,8 +1263,7 @@ main {
 
       @media screen and (max-width: $mobile) {
         gap: 23px;
-       
-        }
+      }
 
       .github {
         @include change;
@@ -1339,7 +1286,6 @@ main {
       padding-left: 17px;
       @media screen and (max-width: 1100px) {
         padding-left: 0px;
-        
       }
 
       p {
@@ -1363,13 +1309,12 @@ main {
       display: flex;
       align-items: center;
       @media screen and (max-width: $tablet) {
-       padding-top: 11px;
+        padding-top: 11px;
       }
 
       @media screen and (max-width: $mobile) {
-        padding-top:0px;
-        
-        }
+        padding-top: 0px;
+      }
 
       .media_list {
         display: flex;
