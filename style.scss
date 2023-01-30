@@ -776,13 +776,13 @@ main {
         button {
          @include button2($font_inika, $orange, $bg_color);
 
-         &:hover {
+        /* &:hover {
             @include buttonhover($orange, $white);
           }
 
           &:active {
             @include buttonactive($green, $white);
-          }
+          }*/
 
           &:focus {
             background-color: $orange;
