@@ -177,31 +177,42 @@ function add(event) {
   var countOfActiveButtons = 0;
   var countOfDisabledButtons = 0;
   for (let i = 0; i < buttonsService.length; i++) {
-    if (buttonsService[i].classList.contains("active")) {
-      countOfActiveButtons += 1;
-    }
     if (buttonsService[i].disabled) {
       countOfDisabledButtons += 1;
     }
   }
-  console.log(countOfActiveButtons);
   console.log(countOfDisabledButtons);
   if (countOfDisabledButtons >= 1) {
     for (let j = 0; j < buttonsService.length; j++) {
       buttonsService[j].removeAttribute("disabled");
-      buttonsService[j].cursor = "pointer";
+      buttonsService[j].style.cursor = "pointer";
     }
   }
   if (eventButton.classList.contains("active")) {
     eventButton.classList.remove("active");
     blurCard(eventButton);
-  } else if (countOfActiveButtons >= 2) {
-    eventButton.disabled = "true";
-    eventButton.cursor = "not-allowed";
   } else {
     eventButton.disabled = false;
     eventButton.classList.toggle("active");
     focusCard(eventButton);
+  }
+  for (let i = 0; i < buttonsService.length; i++) {
+    if (buttonsService[i].classList.contains("active")) {
+      countOfActiveButtons += 1;
+    };
+    
+  };
+  console.log(countOfActiveButtons);
+  for (let k = 0; k < buttonsService.length; k++) {
+    if (countOfActiveButtons >= 2 ) { 
+      if(buttonsService[k].classList.contains("active")) {
+        buttonsService[k].removeAttribute("disabled");
+      buttonsService[k].style.cursor = "pointer";
+    } else {
+      buttonsService[k].disabled = "true";
+      buttonsService[k].style.cursor = "not-allowed";
+    }
+    }
   }
 }
 
