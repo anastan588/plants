@@ -6,9 +6,6 @@ let overLay = document.querySelector(".overlay");
 let buttonsService = document.querySelectorAll(".button_service");
 let cards = document.querySelectorAll(".service_card");
 let nameOfCards = document.querySelectorAll(".card_name");
-let gardenButton = document.querySelector(".garden");
-let lawnButton = document.querySelector(".lawn");
-let plantButton = document.querySelector(".plant");
 
 console.log(buttonsService);
 console.log(cards);
@@ -188,44 +185,47 @@ function add(event) {
       buttonsService[j].style.cursor = "pointer";
     }
   }
-  if (eventButton.classList.contains("active")) {
-    eventButton.classList.remove("active");
+  if (eventButton.classList.contains("button_focus")) {
+    eventButton.classList.remove("button_focus");
     blurCard(eventButton);
+    eventButton.style.backgroundColor = "#edf2ec";
+    eventButton.style.color = "#e06733";
   } else {
     eventButton.disabled = false;
-    eventButton.classList.toggle("active");
+    eventButton.classList.toggle("button_focus");
+    eventButton.style.backgroundColor = "#e06733";
+    eventButton.style.color = "white";
     focusCard(eventButton);
   }
   for (let i = 0; i < buttonsService.length; i++) {
-    if (buttonsService[i].classList.contains("active")) {
+    if (buttonsService[i].classList.contains("button_focus")) {
       countOfActiveButtons += 1;
-    };
-    
-  };
+    }
+  }
   console.log(countOfActiveButtons);
   for (let k = 0; k < buttonsService.length; k++) {
-    if (countOfActiveButtons >= 2 ) { 
-      if(buttonsService[k].classList.contains("active")) {
+    if (countOfActiveButtons >= 2) {
+      if (buttonsService[k].classList.contains("button_focus")) {
         buttonsService[k].removeAttribute("disabled");
-      buttonsService[k].style.cursor = "pointer";
-    } else {
-      buttonsService[k].disabled = "true";
-      buttonsService[k].style.cursor = "not-allowed";
-    }
+        buttonsService[k].style.cursor = "pointer";
+      } else {
+        buttonsService[k].disabled = "true";
+        buttonsService[k].style.cursor = "not-allowed";
+      }
     }
   }
 }
 
 function remove(event) {
   let eventButton = event.target;
-  eventButton.classList.remove(".active");
-
+  eventButton.classList.remove("button_focus");
   console.log(eventButton);
   blurCard(eventButton);
+  for (let i = 0; i < buttonsService.length; i++) {
+    buttonsService[i].style.backgroundColor = "#edf2ec";
+    buttonsService[i].style.color = "#e06733";
+  }
 }
 
-//gardenButton.addEventListener("click", add);
-//lawnButton.addEventListener("click", add);
-//plantButton.addEventListener("click", add);
 buttonsService.forEach((element) => element.addEventListener("click", add));
 //buttonsService.forEach((element) => element.addEventListener("blur", remove));

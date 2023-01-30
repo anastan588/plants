@@ -133,7 +133,7 @@ h6 {
   filter: blur(10px);
 }
 
-.active {
+.button_focus {
   background-color: #e06733;
   color: white;
 }
@@ -796,13 +796,17 @@ main {
   border-color: #e06733;
   border-radius: 5px;
   background-color: #edf2ec;
-  /* &:hover {
+  /*&:hover {
       @include buttonhover($orange, $white);
     }
 
     &:active {
       @include buttonactive($green, $white);
     }*/
+  /*&:focus {
+    background-color: $orange;
+    color: $white;
+  }*/
 }
 @media screen and (max-width: 500px) {
   .service_section .service_container .navigation_block .buttons_block button {
@@ -812,10 +816,6 @@ main {
     width: 121px;
     height: 35px;
   }
-}
-.service_section .service_container .navigation_block .buttons_block button:focus {
-  background-color: #e06733;
-  color: white;
 }
 .service_section .service_container .services_block {
   display: grid;
