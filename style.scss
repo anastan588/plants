@@ -253,7 +253,7 @@ h6 {
    filter:blur(10px);
  }
 
- .active {
+.button_focus {
   background-color: $orange;
   color: $white;
 }
@@ -776,7 +776,7 @@ main {
         button {
          @include button2($font_inika, $orange, $bg_color);
 
-        /* &:hover {
+        /*&:hover {
             @include buttonhover($orange, $white);
           }
 
@@ -784,10 +784,10 @@ main {
             @include buttonactive($green, $white);
           }*/
 
-          &:focus {
+          /*&:focus {
             background-color: $orange;
             color: $white;
-          }
+          }*/
         }
       }
     }
