@@ -138,6 +138,12 @@ h6 {
   color: white;
 }
 
+.arrow_focus {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
+  background-color: #c1e698;
+}
+
 header {
   background-color: #edf2ec;
   padding: 43px 0px;
@@ -193,6 +199,10 @@ header .header_container div p:hover {
   transition: transform 0.5s;
   transform: scale(1.2);
 }
+header .header_container div p:active {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
+}
 header .header_container div p a {
   color: #010201;
 }
@@ -220,6 +230,10 @@ header .header_container .nav_container ul li {
 header .header_container .nav_container ul li:hover {
   transition: transform 0.5s;
   transform: scale(1.2);
+}
+header .header_container .nav_container ul li:active {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
 }
 header .header_container .nav_container ul li a {
   color: #010201;
@@ -313,6 +327,10 @@ header .header_container .burger {
   header .header_container .burger .burger_menu .burger_nav ul li:hover {
     transition: transform 0.5s;
     transform: scale(1.2);
+  }
+  header .header_container .burger .burger_menu .burger_nav ul li:active {
+    transition: transform 0.5s;
+    transform: rotate(180deg);
   }
   header .header_container .burger .burger_menu .burger_nav ul li a {
     color: #010201;
@@ -652,13 +670,13 @@ main {
 .about_section .about_container .text_block h2 span {
   color: #e06733;
 }
-.about_section .about_container .text_block P {
+.about_section .about_container .text_block p {
   font-weight: 400;
   font-size: 125%;
   line-height: 30px;
 }
 @media screen and (max-width: 500px) {
-  .about_section .about_container .text_block P {
+  .about_section .about_container .text_block p {
     font-size: 93.75%;
     line-height: 25px;
   }
@@ -797,12 +815,12 @@ main {
   border-radius: 5px;
   background-color: #edf2ec;
   /*&:hover {
-      @include buttonhover($orange, $white);
-    }
+    @include buttonhover($orange, $white);
+  }
 
-    &:active {
-      @include buttonactive($green, $white);
-    }*/
+  &:active {
+    @include buttonactive($green, $white);
+  }*/
   /*&:focus {
     background-color: $orange;
     color: $white;
@@ -1019,6 +1037,7 @@ main {
   border: 1px solid #e3e1d5;
   border-radius: 20px;
   padding: 35px 39px 33px 41px;
+  transition: all 0.5s ease;
 }
 @media screen and (max-width: 380px) {
   .prices_section .prices_container .prices_block .choise_block {
@@ -1028,27 +1047,33 @@ main {
 }
 .prices_section .prices_container .prices_block .choise_block .choise {
   display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+.prices_section .prices_container .prices_block .choise_block .choise .choise_title {
+  display: flex;
   justify-content: space-between;
   width: 250px;
   height: 50px;
   background-color: #edf2ec;
   border-radius: 20px;
   padding: 16px 40px;
+  transition: all 0.5s ease-out;
 }
 @media screen and (max-width: 380px) {
-  .prices_section .prices_container .prices_block .choise_block .choise {
+  .prices_section .prices_container .prices_block .choise_block .choise .choise_title {
     width: 180px;
     padding: 16px 40px 16px 29px;
   }
 }
-.prices_section .prices_container .prices_block .choise_block .choise h3 {
+.prices_section .prices_container .prices_block .choise_block .choise .choise_title h3 {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 125%;
   line-height: 20px;
 }
 @media screen and (max-width: 500px) {
-  .prices_section .prices_container .prices_block .choise_block .choise h3 {
+  .prices_section .prices_container .prices_block .choise_block .choise .choise_title h3 {
     font-size: 93.75%;
   }
 }
@@ -1061,20 +1086,64 @@ main {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
-.prices_section .prices_container .prices_block .choise_block .choise .arrow_circle:hover {
-  transition: transform 0.5s;
-  transform: scale(1.2);
+  transition: all 0.5s ease;
 }
 @media screen and (max-width: 380px) {
   .prices_section .prices_container .prices_block .choise_block .choise .arrow_circle {
     align-self: center;
     margin-top: 3px;
   }
+  .prices_section .prices_container .prices_block .choise_block .choise .arrow_circle .arrow {
+    width: 8px;
+    height: 5px;
+  }
 }
-.prices_section .prices_container .prices_block .choise_block .choise .arrow_circle .arrow {
-  width: 8px;
-  height: 5px;
+.prices_section .prices_container .prices_block .choise_block .choise_price {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 250px;
+  font-family: "Inter", sans-serif;
+  padding: 0px 40px 0px 40px;
+  background-color: #d6e7d2;
+  border-radius: 20px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+.prices_section .prices_container .prices_block .choise_block .choise_price .price_line {
+  background-color: #aea1a1;
+  height: 1px;
+  min-height: 1px;
+}
+.prices_section .prices_container .prices_block .choise_block .choise_price .price_text {
+  font-weight: 300;
+  font-size: 62.5%;
+  line-height: 10px;
+  color: #717171;
+}
+.prices_section .prices_container .prices_block .choise_block .choise_price .price {
+  padding-bottom: 6px;
+  font-weight: 400;
+  font-size: 75%;
+  line-height: 20px;
+  color: #000000;
+}
+.prices_section .prices_container .prices_block .choise_block .choise_price .price span {
+  font-weight: 700;
+  font-size: 100%;
+  line-height: 20px;
+  color: #e06733;
+}
+.prices_section .prices_container .prices_block .choise_block .choise_price .price_button {
+  width: 86px;
+  padding: 3px 20px 3px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 87.5%;
+  line-height: 20px;
+  color: #717171;
+  margin-bottom: 12px;
 }
 .prices_section .prices_container .text_block {
   display: flex;
@@ -1347,6 +1416,10 @@ main {
   transition: transform 0.5s;
   transform: scale(1.2);
 }
+.contacts_section .contacts_container .choise_block .choise .arrow_circle:active {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
+}
 .contacts_section .contacts_container .choise_block .choise .arrow_circle .arrow {
   width: 8px;
   height: 5px;
@@ -1411,6 +1484,10 @@ main {
   transition: transform 0.5s;
   transform: scale(1.2);
 }
+.footer .footer_container .text_block1 .github:active {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
+}
 .footer .footer_container .text_block1 .github a {
   color: #010201;
 }
@@ -1431,6 +1508,10 @@ main {
 .footer .footer_container .text_block2 p:hover {
   transition: transform 0.5s;
   transform: scale(1.2);
+}
+.footer .footer_container .text_block2 p:active {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
 }
 .footer .footer_container .text_block2 p a {
   color: #010201;
@@ -1466,6 +1547,10 @@ main {
 .footer .footer_container .media_block .media_list .media_item:hover {
   transition: transform 0.5s;
   transform: scale(1.2);
+}
+.footer .footer_container .media_block .media_list .media_item:active {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
 }
 .footer .footer_container .media_block .media_list .media_item .media_link {
   display: inline-block;
