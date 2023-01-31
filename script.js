@@ -6,7 +6,13 @@ let overLay = document.querySelector(".overlay");
 let buttonsService = document.querySelectorAll(".button_service");
 let cards = document.querySelectorAll(".service_card");
 let nameOfCards = document.querySelectorAll(".card_name");
+let buttonsArrow = document.querySelectorAll(".arrow_circle");
+let pricesMenu = document.querySelectorAll(".choise_price");
+let pricesTitle = document.querySelectorAll(".choise_title");
 
+console.log(buttonsArrow);
+console.log(pricesMenu);
+console.log(pricesTitle);
 console.log(buttonsService);
 console.log(cards);
 console.log(nameOfCards);
@@ -34,141 +40,55 @@ overLay.addEventListener("click", burgerClose);
 var event;
 
 function focusCard(eventButton) {
-  if (eventButton.innerHTML[0] === "G") {
-    for (let j = 0; j < nameOfCardsArray.length; j++) {
-      if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
-        cards[j].classList.add("service_focus");
+  for (let j = 0; j < nameOfCardsArray.length; j++) {
+    if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
+      cards[j].classList.add("service_focus");
+      cards[j].classList.remove("service_nonefocus");
+    } else if (nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]) {
+      if (cards[j].classList.contains("service_focus")) {
         cards[j].classList.remove("service_nonefocus");
-      } else if (
-        nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]
-      ) {
-        if (cards[j].classList.contains("service_focus")) {
-          cards[j].classList.remove("service_nonefocus");
-        } else {
-          cards[j].classList.add("service_nonefocus");
-        }
-      }
-    }
-  }
-  if (eventButton.innerHTML[0] === "L") {
-    for (let j = 0; j < nameOfCardsArray.length; j++) {
-      if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
-        cards[j].classList.add("service_focus");
-        cards[j].classList.remove("service_nonefocus");
-      } else if (
-        nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]
-      ) {
-        if (cards[j].classList.contains("service_focus")) {
-          cards[j].classList.remove("service_nonefocus");
-        } else {
-          cards[j].classList.add("service_nonefocus");
-        }
-      }
-    }
-  }
-  if (eventButton.innerHTML[0] === "P") {
-    for (let j = 0; j < nameOfCardsArray.length; j++) {
-      if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
-        cards[j].classList.add("service_focus");
-        cards[j].classList.remove("service_nonefocus");
-      } else if (
-        nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]
-      ) {
-        if (cards[j].classList.contains("service_focus")) {
-          cards[j].classList.remove("service_nonefocus");
-        } else {
-          cards[j].classList.add("service_nonefocus");
-        }
+      } else {
+        cards[j].classList.add("service_nonefocus");
       }
     }
   }
 }
 
 function blurCard(eventButton) {
-  if (eventButton.innerHTML[0] === "G") {
-    console.log(eventButton.innerHTML[0]);
-    let count = 0;
-    for (let i = 0; i < nameOfCardsArray.length; i++) {
-      if (cards[i].classList.contains("service_nonefocus")) {
-        count++;
-      } else {
-        count;
-      }
-    }
-    console.log(count);
-    for (let j = 0; j < nameOfCardsArray.length; j++) {
-      console.log(nameOfCardsArray[j].innerHTML[0]);
-      if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
-        cards[j].classList.remove("service_focus");
-        if (count < 4) {
-          cards[j].classList.add("service_nonefocus");
-        }
-      } else if (
-        nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]
-      ) {
-        if (count >= 4) {
-          cards[j].classList.remove("service_nonefocus");
-        }
-      }
+  console.log(eventButton.innerHTML[0]);
+  let count = 0;
+  for (let i = 0; i < nameOfCardsArray.length; i++) {
+    if (cards[i].classList.contains("service_nonefocus")) {
+      count++;
+    } else {
+      count;
     }
   }
-  if (eventButton.innerHTML[0] === "L") {
-    console.log(eventButton.innerHTML[0]);
-    let count = 0;
-    for (let i = 0; i < nameOfCardsArray.length; i++) {
-      if (cards[i].classList.contains("service_nonefocus")) {
-        count++;
-      } else {
-        count;
+  console.log(count);
+  for (let j = 0; j < nameOfCardsArray.length; j++) {
+    if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
+      cards[j].classList.remove("service_focus");
+      if (count < 4 && eventButton.innerHTML[0] === "G") {
+        cards[j].classList.add("service_nonefocus");
+      } else if (count < 5 && eventButton.innerHTML[0] === "L") {
+        cards[j].classList.add("service_nonefocus");
+      } else if (count < 3 && eventButton.innerHTML[0] === "p") {
+        cards[j].classList.add("service_nonefocus");
       }
-    }
-    console.log(count);
-    for (let j = 0; j < nameOfCardsArray.length; j++) {
-      console.log(nameOfCardsArray[j].innerHTML[0]);
-      if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
-        cards[j].classList.remove("service_focus");
-        if (count < 5) {
-          cards[j].classList.add("service_nonefocus");
-        }
-      } else if (
-        nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]
-      ) {
-        if (count >= 5) {
-          cards[j].classList.remove("service_nonefocus");
-        }
-      }
-    }
-  }
-  if (eventButton.innerHTML[0] === "P") {
-    console.log(eventButton.innerHTML[0]);
-    let count = 0;
-    for (let i = 0; i < nameOfCardsArray.length; i++) {
-      if (cards[i].classList.contains("service_nonefocus")) {
-        count++;
-      } else {
-        count;
-      }
-    }
-    console.log(count);
-    for (let j = 0; j < nameOfCardsArray.length; j++) {
-      console.log(nameOfCardsArray[j].innerHTML[0]);
-      if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
-        cards[j].classList.remove("service_focus");
-        if (count < 3) {
-          cards[j].classList.add("service_nonefocus");
-        }
-      } else if (
-        nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]
-      ) {
-        if (count >= 3) {
-          cards[j].classList.remove("service_nonefocus");
-        }
+    } else if (nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]) {
+      if (count >= 4 && eventButton.innerHTML[0] === "G") {
+        cards[j].classList.remove("service_nonefocus");
+      } else if (count >= 5 && eventButton.innerHTML[0] === "L") {
+        cards[j].classList.remove("service_nonefocus");
+      } else if (count >= 3 && eventButton.innerHTML[0] === "P") {
+        cards[j].classList.remove("service_nonefocus");
       }
     }
   }
 }
 
 function add(event) {
+  event.stopPropagation();
   let eventButton = event.target;
   console.log(eventButton);
   var countOfActiveButtons = 0;
@@ -216,16 +136,72 @@ function add(event) {
   }
 }
 
-function remove(event) {
-  let eventButton = event.target;
-  eventButton.classList.remove("button_focus");
-  console.log(eventButton);
-  blurCard(eventButton);
+function remove() {
   for (let i = 0; i < buttonsService.length; i++) {
+    eventButton = buttonsService[i];
+    buttonsService[i].classList.remove("button_focus");
     buttonsService[i].style.backgroundColor = "#edf2ec";
     buttonsService[i].style.color = "#e06733";
+    buttonsService[i].removeAttribute("disabled");
+    buttonsService[i].style.cursor = "pointer";
+    blurCard(eventButton);
   }
 }
 
 buttonsService.forEach((element) => element.addEventListener("click", add));
-//buttonsService.forEach((element) => element.addEventListener("blur", remove));
+window.addEventListener("click", remove);
+
+function accorditionMenu(event) {
+  event.stopPropagation();
+  let eventButton = event.currentTarget;
+
+  console.log(eventButton);
+  var countOfActiveArrows = 0;
+  for (let i = 0; i < buttonsArrow.length; i++) {
+    if (buttonsArrow[i].classList.contains("arrow_focus")) {
+      countOfActiveArrows += 1;
+    }
+  }
+  console.log(countOfActiveArrows);
+  if (countOfActiveArrows >= 1) {
+    for (let j = 0; j < buttonsArrow.length-1; j++) {
+      buttonsArrow[j].classList.remove("arrow_focus");
+      buttonsArrow[j].style.backgroundColor = "#d9d9d9";
+      pricesTitle[j].style.backgroundColor = "#edf2ec";
+      pricesTitle[j].style.borderBottomLeftRadius = "20px";
+      pricesTitle[j].style.borderBottomRightRadius = "20px";
+      pricesMenu[j].style.borderTopLeftRadius = "20px";
+      pricesMenu[j].style.borderTopRightRadius = "20px";
+      pricesMenu[j].style.maxHeight = "0px";
+      pricesMenu[j].style.overflow = "hidden";
+    }
+  }
+  eventButton.classList.toggle("arrow_focus");
+  for (let k = 0; k < buttonsArrow.length-1; k++) {
+    if (buttonsArrow[k].classList.contains("arrow_focus")) {
+      eventButton.style.backgroundColor = "#c1e698";
+      pricesTitle[k].style.backgroundColor = "#d6e7d2";
+      pricesTitle[k].style.borderBottomLeftRadius = "0px";
+      pricesTitle[k].style.borderBottomRightRadius = "0px";
+      pricesMenu[k].style.borderTopLeftRadius = "0px";
+      pricesMenu[k].style.borderTopRightRadius = "0px";
+      //pricesMenu[i].style.display = "flex";
+      pricesMenu[k].style.maxHeight = pricesMenu[k].scrollHeight + "px";
+      pricesMenu[k].style.overflow = "";
+    } else {
+      eventButton.style.backgroundColor = "#d9d9d9";
+      pricesTitle[k].style.backgroundColor = "#edf2ec";
+      pricesTitle[k].style.borderBottomLeftRadius = "20px";
+      pricesTitle[k].style.borderBottomRightRadius = "20px";
+      pricesMenu[k].style.borderTopLeftRadius = "20px";
+      pricesMenu[k].style.borderTopRightRadius = "20px";
+      pricesMenu[k].style.maxHeight = "0px";
+      //pricesMenu[i].style.display = "none";
+      pricesMenu[k].style.overflow = "hidden";
+    }
+  }
+}
+
+buttonsArrow.forEach((element) =>
+  element.addEventListener("click", accorditionMenu)
+);

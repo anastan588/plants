@@ -101,6 +101,10 @@ $container: 1220px;
     transition: transform 0.5s;
     transform: scale(1.2);
   }
+  &:active {
+    transition: transform 0.5s;
+    transform: rotate(180deg);
+  }
 }
 
 @mixin linkshover($orange) {
@@ -246,18 +250,23 @@ h6 {
 
 .service_focus {
   transform: scale(1.05);
-   background-color: $burger-color;
- }
+  background-color: $burger-color;
+}
 
- .service_nonefocus {
-   filter:blur(10px);
- }
+.service_nonefocus {
+  filter: blur(10px);
+}
 
 .button_focus {
   background-color: $orange;
   color: $white;
 }
 
+.arrow_focus {
+  transition: transform 0.5s;
+  transform: rotate(180deg);
+  background-color: $burger-color;
+}
 
 header {
   background-color: $bg_color;
@@ -670,7 +679,7 @@ main {
         }
       }
 
-      P {
+      p {
         font-weight: 400;
         font-size: 125%;
         line-height: 30px;
@@ -704,7 +713,6 @@ main {
 }
 
 .service_section {
- 
   background-color: $bg_color;
 
   .service_container {
@@ -774,9 +782,9 @@ main {
         }
 
         button {
-         @include button2($font_inika, $orange, $bg_color);
+          @include button2($font_inika, $orange, $bg_color);
 
-        /*&:hover {
+          /*&:hover {
             @include buttonhover($orange, $white);
           }
 
@@ -793,7 +801,7 @@ main {
     }
 
     .services_block {
-     display: grid;
+      display: grid;
       grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 117px;
@@ -839,8 +847,6 @@ main {
         @media screen and (max-width: $mobile) {
           padding-bottom: 20px;
         }
-
-       
 
         .image_block {
           position: relative;
@@ -960,6 +966,8 @@ main {
         border: 1px solid $border_color;
         border-radius: 20px;
         padding: 35px 39px 33px 41px;
+        transition: all 0.5s ease;
+
 
         @media screen and (max-width: $mobile) {
           padding: 28px 22px;
@@ -967,6 +975,11 @@ main {
         }
 
         .choise {
+           display:flex;
+           flex-direction: column;
+           transition: all 0.5s ease;
+
+          .choise_title {
           display: flex;
           justify-content: space-between;
           width: 250px;
@@ -974,12 +987,12 @@ main {
           background-color: $bg_color;
           border-radius: 20px;
           padding: 16px 40px;
+          transition: all 0.5s ease-out;
           @media screen and (max-width: $mobile) {
             width: 180px;
             padding: 16px 40px 16px 29px;
           }
-
-          h3 {
+         h3 {
             font-family: $font_inter;
             font-weight: 700;
             font-size: 125%;
@@ -988,6 +1001,9 @@ main {
             @media screen and (max-width: 500px) {
               font-size: 93.75%;
             }
+          }
+
+          
           }
 
           .arrow_circle {
@@ -999,16 +1015,68 @@ main {
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            @include change;
+            transition: all 0.5s ease;
+            //@include change;
             @media screen and (max-width: $mobile) {
               align-self: center;
               margin-top: 3px;
-            }
 
-            .arrow {
-              width: 8px;
-              height: 5px;
+              .arrow {
+                width: 8px;
+                height: 5px;
+                //@include change;
+              }
             }
+          }
+        }
+
+        .choise_price {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          max-width: 250px;
+          font-family: $font_inter;
+          padding: 0px 40px 0px 40px;
+          background-color: $bg_color_choise;
+          border-radius: 20px;
+         // border-bottom-left-radius: 20px;
+         // border-bottom-right-radius: 20px;
+          max-height: 0px;
+          overflow: hidden;
+          transition: all 0.5s ease-out;
+          .price_line {
+            background-color: $arrowcontacts;
+            height: 1px;
+            min-height: 1px;
+          }
+          .price_text {
+            font-weight: 300;
+            font-size: 62.5%;
+            line-height: 10px;
+            color: $light_grey;
+          }
+          .price {
+            padding-bottom: 6px;
+            font-weight: 400;
+            font-size: 75%;
+            line-height: 20px;
+            color: $black;
+            span {
+              font-weight: 700;
+              font-size: 100%;
+              line-height: 20px;
+              color: $orange;
+            }
+          }
+          .price_button {
+            width: 86px;
+            padding: 3px 20px 3px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 87.5%;
+            line-height: 20px;
+            color: $light_grey;
+            margin-bottom: 12px;
           }
         }
       }
