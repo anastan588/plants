@@ -13,13 +13,9 @@ let pricesTitle = document.querySelectorAll(".choise_title");
 console.log(buttonsArrow);
 console.log(pricesMenu);
 console.log(pricesTitle);
-console.log(buttonsService);
-console.log(cards);
-console.log(nameOfCards);
 let buttonsServiceArray = Array.prototype.slice.call(buttonsService);
 console.log(buttonsServiceArray);
 let nameOfCardsArray = Array.prototype.slice.call(nameOfCards);
-console.log(nameOfCardsArray);
 
 function burgerOpen() {
   burgerMenu.style.right = "0%";
@@ -55,7 +51,6 @@ function focusCard(eventButton) {
 }
 
 function blurCard(eventButton) {
-  console.log(eventButton.innerHTML[0]);
   let count = 0;
   for (let i = 0; i < nameOfCardsArray.length; i++) {
     if (cards[i].classList.contains("service_nonefocus")) {
@@ -64,7 +59,7 @@ function blurCard(eventButton) {
       count;
     }
   }
-  console.log(count);
+
   for (let j = 0; j < nameOfCardsArray.length; j++) {
     if (nameOfCardsArray[j].innerHTML[0] === eventButton.innerHTML[0]) {
       cards[j].classList.remove("service_focus");
@@ -72,7 +67,7 @@ function blurCard(eventButton) {
         cards[j].classList.add("service_nonefocus");
       } else if (count < 5 && eventButton.innerHTML[0] === "L") {
         cards[j].classList.add("service_nonefocus");
-      } else if (count < 3 && eventButton.innerHTML[0] === "p") {
+      } else if (count < 3 && eventButton.innerHTML[0] === "P") {
         cards[j].classList.add("service_nonefocus");
       }
     } else if (nameOfCardsArray[j].innerHTML[0] !== eventButton.innerHTML[0]) {
@@ -90,7 +85,7 @@ function blurCard(eventButton) {
 function add(event) {
   event.stopPropagation();
   let eventButton = event.target;
-  console.log(eventButton);
+
   var countOfActiveButtons = 0;
   var countOfDisabledButtons = 0;
   for (let i = 0; i < buttonsService.length; i++) {
@@ -98,7 +93,7 @@ function add(event) {
       countOfDisabledButtons += 1;
     }
   }
-  console.log(countOfDisabledButtons);
+
   if (countOfDisabledButtons >= 1) {
     for (let j = 0; j < buttonsService.length; j++) {
       buttonsService[j].removeAttribute("disabled");
@@ -122,7 +117,7 @@ function add(event) {
       countOfActiveButtons += 1;
     }
   }
-  console.log(countOfActiveButtons);
+
   for (let k = 0; k < buttonsService.length; k++) {
     if (countOfActiveButtons >= 2) {
       if (buttonsService[k].classList.contains("button_focus")) {
@@ -143,65 +138,62 @@ function remove() {
     buttonsService[i].style.backgroundColor = "#edf2ec";
     buttonsService[i].style.color = "#e06733";
     buttonsService[i].removeAttribute("disabled");
-    buttonsService[i].style.cursor = "pointer";
-    blurCard(eventButton);
+    buttonsService[i].style.cursor = "pointer"
+  }
+  for (let j = 0; j < nameOfCardsArray.length; j++) {
+    cards[j].classList.remove("service_nonefocus");
+    cards[j].classList.remove("service_focus");
   }
 }
 
 buttonsService.forEach((element) => element.addEventListener("click", add));
 window.addEventListener("click", remove);
 
-function accorditionMenu(event) {
-  event.stopPropagation();
-  let eventButton = event.currentTarget;
+for (let i = 0; i < pricesTitle.length; i++) {
+  pricesTitle[i].addEventListener("click", function () {
+    event.stopPropagation();
+    console.log(this);
+    var countOfActiveArrows = 0;
+    for (let j = 0; j < pricesTitle.length; j++) {
+      if (pricesTitle[j].classList.contains("arrow_focus")) {
+        countOfActiveArrows += 1;
+        console.log(countOfActiveArrows);
+        if (countOfActiveArrows >= 1 && this !== pricesTitle[j]) {
+          pricesTitle[j].classList.remove("arrow_focus");
+          buttonsArrow[j].style.transform = "rotate(0deg)";
+          buttonsArrow[j].style.backgroundColor = "#d9d9d9";
+          pricesTitle[j].style.backgroundColor = "#edf2ec";
+          pricesTitle[j].style.borderBottomLeftRadius = "20px";
+          pricesTitle[j].style.borderBottomRightRadius = "20px";
+          pricesMenu[j].style.borderTopLeftRadius = "20px";
+          pricesMenu[j].style.borderTopRightRadius = "20px";
+          pricesMenu[j].style.maxHeight = "0px";
+          pricesMenu[j].style.overflow = "hidden";
+        }
+      }
+    }
 
-  console.log(eventButton);
-  var countOfActiveArrows = 0;
-  for (let i = 0; i < buttonsArrow.length; i++) {
-    if (buttonsArrow[i].classList.contains("arrow_focus")) {
-      countOfActiveArrows += 1;
-    }
-  }
-  console.log(countOfActiveArrows);
-  if (countOfActiveArrows >= 1) {
-    for (let j = 0; j < buttonsArrow.length-1; j++) {
-      buttonsArrow[j].classList.remove("arrow_focus");
-      buttonsArrow[j].style.backgroundColor = "#d9d9d9";
-      pricesTitle[j].style.backgroundColor = "#edf2ec";
-      pricesTitle[j].style.borderBottomLeftRadius = "20px";
-      pricesTitle[j].style.borderBottomRightRadius = "20px";
-      pricesMenu[j].style.borderTopLeftRadius = "20px";
-      pricesMenu[j].style.borderTopRightRadius = "20px";
-      pricesMenu[j].style.maxHeight = "0px";
-      pricesMenu[j].style.overflow = "hidden";
-    }
-  }
-  eventButton.classList.toggle("arrow_focus");
-  for (let k = 0; k < buttonsArrow.length-1; k++) {
-    if (buttonsArrow[k].classList.contains("arrow_focus")) {
-      eventButton.style.backgroundColor = "#c1e698";
-      pricesTitle[k].style.backgroundColor = "#d6e7d2";
-      pricesTitle[k].style.borderBottomLeftRadius = "0px";
-      pricesTitle[k].style.borderBottomRightRadius = "0px";
-      pricesMenu[k].style.borderTopLeftRadius = "0px";
-      pricesMenu[k].style.borderTopRightRadius = "0px";
-      //pricesMenu[i].style.display = "flex";
-      pricesMenu[k].style.maxHeight = pricesMenu[k].scrollHeight + "px";
-      pricesMenu[k].style.overflow = "";
+    this.classList.toggle("arrow_focus");
+    if (this.classList.contains("arrow_focus")) {
+      buttonsArrow[i].style.backgroundColor = "#c1e698";
+      buttonsArrow[i].style.transform = "rotate(180deg)";
+      this.style.backgroundColor = "#d6e7d2";
+      this.style.borderBottomLeftRadius = "0px";
+      this.style.borderBottomRightRadius = "0px";
+      pricesMenu[i].style.borderTopLeftRadius = "0px";
+      pricesMenu[i].style.borderTopRightRadius = "0px";
+      pricesMenu[i].style.maxHeight = pricesMenu[i].scrollHeight + "px";
+      pricesMenu[i].style.overflow = "";
     } else {
-      eventButton.style.backgroundColor = "#d9d9d9";
-      pricesTitle[k].style.backgroundColor = "#edf2ec";
-      pricesTitle[k].style.borderBottomLeftRadius = "20px";
-      pricesTitle[k].style.borderBottomRightRadius = "20px";
-      pricesMenu[k].style.borderTopLeftRadius = "20px";
-      pricesMenu[k].style.borderTopRightRadius = "20px";
-      pricesMenu[k].style.maxHeight = "0px";
-      //pricesMenu[i].style.display = "none";
-      pricesMenu[k].style.overflow = "hidden";
+      buttonsArrow[i].style.backgroundColor = "#d9d9d9";
+      buttonsArrow[i].style.transform = "rotate(0deg)";
+      this.style.backgroundColor = "#edf2ec";
+      this.style.borderBottomLeftRadius = "20px";
+      this.style.borderBottomRightRadius = "20px";
+      pricesMenu[i].style.borderTopLeftRadius = "20px";
+      pricesMenu[i].style.borderTopRightRadius = "20px";
+      pricesMenu[i].style.maxHeight = "0px";
+      pricesMenu[i].style.overflow = "hidden";
     }
-  }
+  });
 }
-
-buttonsArrow.forEach((element) =>
-  element.addEventListener("click", accorditionMenu)
-);

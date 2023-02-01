@@ -139,9 +139,7 @@ h6 {
 }
 
 .arrow_focus {
-  transition: transform 0.5s;
-  transform: rotate(180deg);
-  background-color: #c1e698;
+  background-color: #d6e7d2;
 }
 
 header {
@@ -1402,7 +1400,7 @@ main {
   line-height: 40px;
   letter-spacing: 0.05em;
 }
-.contacts_section .contacts_container .choise_block .choise .arrow_circle {
+.contacts_section .contacts_container .choise_block .choise .arrow_circle_contacts {
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -1412,15 +1410,15 @@ main {
   align-items: center;
   cursor: pointer;
 }
-.contacts_section .contacts_container .choise_block .choise .arrow_circle:hover {
+.contacts_section .contacts_container .choise_block .choise .arrow_circle_contacts:hover {
   transition: transform 0.5s;
   transform: scale(1.2);
 }
-.contacts_section .contacts_container .choise_block .choise .arrow_circle:active {
+.contacts_section .contacts_container .choise_block .choise .arrow_circle_contacts:active {
   transition: transform 0.5s;
   transform: rotate(180deg);
 }
-.contacts_section .contacts_container .choise_block .choise .arrow_circle .arrow {
+.contacts_section .contacts_container .choise_block .choise .arrow_circle_contacts .arrow {
   width: 8px;
   height: 5px;
 }

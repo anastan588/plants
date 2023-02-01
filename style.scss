@@ -263,9 +263,7 @@ h6 {
 }
 
 .arrow_focus {
-  transition: transform 0.5s;
-  transform: rotate(180deg);
-  background-color: $burger-color;
+  background-color: $bg_color_choise;
 }
 
 header {
@@ -1278,7 +1276,7 @@ main {
           letter-spacing: 0.05em;
         }
 
-        .arrow_circle {
+        .arrow_circle_contacts {
           width: 16px;
           height: 16px;
           border-radius: 50%;
