@@ -8,8 +8,22 @@ let cards = document.querySelectorAll(".service_card");
 let nameOfCards = document.querySelectorAll(".card_name");
 let buttonsArrow = document.querySelectorAll(".arrow_circle");
 let pricesMenu = document.querySelectorAll(".choise_price");
-let pricesTitle = document.querySelectorAll(".choise_title");
+let pricesTitle = document.querySelectorAll(".choise_price_title");
+let contactsInput = document.querySelector(".choise");
+let contactsInputTitle = document.querySelector(".choise_title");
+let contactsArrowCircle = document.querySelector(".arrow_circle_contacts");
+let contactsArrow = document.querySelector(".arrow_contacts");
+let townsChoise = document.querySelector(".towns_block");
+let townName = document.querySelectorAll(".town_name");
+let townsCallBlock = document.querySelector(".call_block");
+let cityValue = document.querySelector(".city_value");
+let phoneValue = document.querySelector(".phone_value");
+let adressValue = document.querySelector(".adress_value");
+let callLink = document.querySelector(".button_call_link");
+let contactsSection = document.querySelector(".contacts_section");
 
+console.log(contactsInput);
+console.log(contactsInputTitle);
 console.log(buttonsArrow);
 console.log(pricesMenu);
 console.log(pricesTitle);
@@ -29,7 +43,7 @@ function burgerClose() {
 
 burgerOpenButton.addEventListener("click", burgerOpen);
 burgerCloseButton.addEventListener("click", burgerClose);
-burgerMenulink.forEach((element) =>
+burgerMenulink.forEach(element =>
   element.addEventListener("click", burgerClose)
 );
 overLay.addEventListener("click", burgerClose);
@@ -138,7 +152,7 @@ function remove() {
     buttonsService[i].style.backgroundColor = "#edf2ec";
     buttonsService[i].style.color = "#e06733";
     buttonsService[i].removeAttribute("disabled");
-    buttonsService[i].style.cursor = "pointer"
+    buttonsService[i].style.cursor = "pointer";
   }
   for (let j = 0; j < nameOfCardsArray.length; j++) {
     cards[j].classList.remove("service_nonefocus");
@@ -146,11 +160,11 @@ function remove() {
   }
 }
 
-buttonsService.forEach((element) => element.addEventListener("click", add));
+buttonsService.forEach(element => element.addEventListener("click", add));
 window.addEventListener("click", remove);
 
 for (let i = 0; i < pricesTitle.length; i++) {
-  pricesTitle[i].addEventListener("click", function () {
+  pricesTitle[i].addEventListener("click", function() {
     event.stopPropagation();
     console.log(this);
     var countOfActiveArrows = 0;
@@ -197,3 +211,104 @@ for (let i = 0; i < pricesTitle.length; i++) {
     }
   });
 }
+
+function removePrice() {
+  for (let j = 0; j < pricesTitle.length; j++) {
+    pricesTitle[j].classList.remove("arrow_focus");
+    buttonsArrow[j].style.transform = "rotate(0deg)";
+    buttonsArrow[j].style.backgroundColor = "#d9d9d9";
+    pricesTitle[j].style.backgroundColor = "#edf2ec";
+    pricesTitle[j].style.borderBottomLeftRadius = "20px";
+    pricesTitle[j].style.borderBottomRightRadius = "20px";
+    pricesMenu[j].style.borderTopLeftRadius = "20px";
+    pricesMenu[j].style.borderTopRightRadius = "20px";
+    pricesMenu[j].style.maxHeight = "0px";
+    pricesMenu[j].style.overflow = "hidden";
+  }
+}
+
+window.addEventListener("click", removePrice);
+
+var towns = [
+   city= { 
+    town: "Canandaigua, NY", 
+    phone: "+1	585	393 0001",
+    office_adress: "151 Charlotte Street"
+   },
+   city= {  
+    town: "New York City", 
+    phone: "+1	212	456 0002",
+    office_adress: "9 East 91st Street"
+  },
+  city= { 
+    town: "Yonkers, NY", 
+    phone: "+1	914	678 0003",
+    office_adress: "511 Warburton Ave"
+  },
+  city= {
+    town: "Sherrill, NY",
+    phone: "+1	315	908 0004",
+    office_adress: "14 WEST Noyes BLVD"
+  }
+];
+
+function contactsChoise(event) {
+  event.stopPropagation();
+  let eventContact = event.target;
+  console.log(eventContact);
+  eventContact.classList.toggle("contacts");
+  if (eventContact.classList.contains("contacts")) {
+    contactsInput.style.backgroundColor = "#C1E698";
+    eventContact.style.transform = "rotate(180deg)";
+    townsChoise.style.maxHeight = "222px";
+    townsChoise.style.overflow = "";
+  } else {
+    contactsInput.style.backgroundColor = "#D6E7D2";
+    eventContact.style.transform = "rotate(0deg)";
+    townsChoise.style.maxHeight = "0px";
+    townsChoise.style.overflow = "hidden";
+  }
+}
+
+function choiseTown(event) {
+  event.stopPropagation();
+  let eventName = event.target;
+  console.log(eventName);
+  contactsInputTitle.innerHTML = eventName.innerHTML;
+  contactsInput.style.backgroundColor = "#D6E7D2";
+  contactsArrowCircle.style.transform = "rotate(0deg)";
+  contactsArrow.style.transform = "rotate(0deg)";
+  townsChoise.style.maxHeight = "0px";
+  townsChoise.style.overflow = "hidden";
+  contactsArrowCircle.classList.remove("contacts");
+  contactsArrow.classList.remove("contacts");
+  townsCallBlock.style.display ="flex";
+ 
+  //let townsLength = Object.keys(towns);
+  //console.log(townsLength);
+  console.log(towns);
+  for (let i=0; i < towns.length; i++) {
+    console.log(towns[i].town);
+    console.log(towns[i].phone);
+    console.log(towns[i].office_adress);
+    if (contactsInputTitle.innerHTML === towns[i].town) {
+      cityValue.innerHTML = towns[i].town;
+      phoneValue.innerHTML = towns[i].phone;
+      adressValue.innerHTML = towns[i].office_adress;
+      callLink.setAttribute("href", `tel: ${towns[i].phone}`);
+    };
+  }
+};
+
+function removeTowns() {
+      cityValue.innerHTML = "";
+      phoneValue.innerHTML = "";
+      adressValue.innerHTML = "";
+      callLink.setAttribute("href", `tel: `);
+      townsCallBlock.style.display ="none";
+      contactsInputTitle.innerHTML = "City";
+}
+
+contactsArrowCircle.addEventListener("click", contactsChoise);
+townName.forEach(element => element.addEventListener("click", choiseTown));
+contactsSection.addEventListener("click", removeTowns);

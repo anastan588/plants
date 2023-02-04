@@ -19,6 +19,8 @@ $burger-color: #c1e698;
 $tablet: 768px;
 $mobile: 380px;
 $overlay_color: rgba(0, 0, 0, 0.5);
+$town-font-color:  #499A18; 
+$city-bg-color:#DCE9D9;
 
 /*colors*/
 
@@ -972,12 +974,12 @@ main {
           gap: 14px;
         }
 
-        .choise {
+        .choise_price_section {
            display:flex;
            flex-direction: column;
            transition: all 0.5s ease;
 
-          .choise_title {
+          .choise_price_title {
           display: flex;
           justify-content: space-between;
           width: 250px;
@@ -986,6 +988,7 @@ main {
           border-radius: 20px;
           padding: 16px 40px;
           transition: all 0.5s ease-out;
+          cursor: pointer;
           @media screen and (max-width: $mobile) {
             width: 180px;
             padding: 16px 40px 16px 29px;
@@ -1236,6 +1239,8 @@ main {
 
     .choise_block {
       padding-top: 95px;
+      display: flex;
+      flex-direction: column;
 
       @media screen and (max-width: 1100px) {
         padding-top: 0px;
@@ -1249,7 +1254,8 @@ main {
         height: 50px;
         background-color: $bg_color_choise;
         padding: 5px 35px 5px 20px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
 
         @media screen and (max-width: 1150px) {
           width: 400px;
@@ -1274,6 +1280,7 @@ main {
           font-size: 125%;
           line-height: 40px;
           letter-spacing: 0.05em;
+          color: $light_grey;
         }
 
         .arrow_circle_contacts {
@@ -1285,14 +1292,122 @@ main {
           justify-content: center;
           align-items: center;
           cursor: pointer;
+          transition: all 0.5s ease;
           @include change;
 
-          .arrow {
+          .arrow_contacts {
             width: 8px;
             height: 5px;
           }
         }
       }
+
+      .towns_block {
+        box-sizing: border-box;
+        width: 450px;
+        //height: 234px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        padding: 0px 35px 0px 35px;
+        background-color: $city-bg-color;
+        max-height: 0px;
+        overflow: hidden;
+        transition: all 0.5s ease-out;
+
+        .town {
+          display: flex;
+          max-width: 380px;
+          border-bottom: 1px solid $arrow;
+          //padding-right: 200px;
+          &:hover {
+            border-bottom: 1px solid $light_grey;
+          }
+
+          &:first-child {
+            margin-top: 27px;
+          }
+          &:last-child {
+           margin-bottom: 31px;
+          }
+
+          .town_name {
+            font-family: $font_inter;
+            font-weight: 400;
+            font-size: 100%;
+            line-height: 40px;  
+            letter-spacing: 0.05em;
+            color: $town-font-color;
+            cursor: pointer;
+            &:hover {
+             color: $light_grey;
+            }
+
+          }
+        }
+      }
+
+      .call_block {
+        display: none;
+        margin-top: 50px;
+        //display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        max-width: 448px;
+        background-color: $bg_color;
+        border: 1px solid $black;
+        border-radius: 20px;
+        padding: 17px 33px 32px 33px;
+        transition: all 0.5 ease;
+        
+        .call_towns {
+          width: 100%;
+          .town_information {
+              display: flex;
+              gap: 5px;
+            .town_property {
+              font-family: $font_inter;
+              font-weight: 400;
+              font-size: 100%;
+              line-height: 40px;
+              letter-spacing: 0.05em;
+              color: $black;
+            }
+            .property_value {
+              font-family: $font_inter;
+              font-weight: 400;
+              font-size: 100%;
+              line-height: 40px;
+              letter-spacing: 0.05em;
+              color: $light_grey;
+            }
+          }
+          
+        }
+        .button_call {
+         
+          .button_call_link {
+            font-family: $font_inika;
+            font-weight: 700;
+            font-size: 62.5%;
+            line-height: 13px;
+            text-align: center;
+            color: $light_grey;
+            display: block;
+            border: 1px solid $orange;
+            border-radius: 5px;
+            padding: 7px 39px;
+            cursor: pointer;
+            &:hover {
+              background-color: $orange;
+              color: $white;
+            }
+          }
+        }
+      } 
     }
   }
 }
