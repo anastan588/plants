@@ -1045,6 +1045,9 @@ main {
           max-height: 0px;
           overflow: hidden;
           transition: all 0.5s ease-out;
+          @media screen and (max-width: $mobile) {
+            max-width: 180px;
+          }
           .price_line {
             background-color: $arrowcontacts;
             height: 1px;
@@ -1316,6 +1319,25 @@ main {
         overflow: hidden;
         transition: all 0.5s ease-out;
 
+        @media screen and (max-width: 1150px) {
+          width: 400px;
+        }
+
+        @media screen and (max-width: $tablet) {
+          width: 450px;
+        }
+
+        @media screen and (max-width: 500px) {
+          max-width: 350px;
+        }
+
+        @media screen and (max-width: $mobile) {
+          max-width: 300px;
+         
+        }
+
+
+
         .town {
           display: flex;
           max-width: 380px;
@@ -1362,7 +1384,11 @@ main {
         border-radius: 20px;
         padding: 17px 33px 32px 33px;
         transition: all 0.5 ease;
-        
+        @media screen and (max-width: $mobile) {
+          padding: 17px 15px 32px 15px;
+         
+        }
+
         .call_towns {
           width: 100%;
           .town_information {
