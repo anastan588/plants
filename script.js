@@ -308,7 +308,15 @@ function removeTowns() {
       townsCallBlock.style.display ="none";
       contactsInputTitle.innerHTML = "City";
 }
-
+ function removeCityChoise() {
+  contactsInput.style.backgroundColor = "#D6E7D2";
+  contactsArrowCircle.style.transform = "rotate(0deg)";
+  contactsArrow.style.transform = "rotate(0deg)";
+  townsChoise.style.maxHeight = "0px";
+  townsChoise.style.overflow = "hidden";
+ }
 contactsArrowCircle.addEventListener("click", contactsChoise);
 townName.forEach(element => element.addEventListener("click", choiseTown));
 contactsSection.addEventListener("click", removeTowns);
+window.addEventListener("click", removeCityChoise);
+
