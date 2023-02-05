@@ -11,6 +11,8 @@ let pricesMenu = document.querySelectorAll(".choise_price");
 let pricesTitle = document.querySelectorAll(".choise_price_title");
 let contactsInput = document.querySelector(".choise");
 let contactsInputTitle = document.querySelector(".choise_title");
+let priceSection = document.querySelector(".prices_section");
+let priceButton = document.querySelectorAll(".price_button");
 let contactsArrowCircle = document.querySelector(".arrow_circle_contacts");
 let contactsArrow = document.querySelector(".arrow_contacts");
 let townsChoise = document.querySelector(".towns_block");
@@ -164,7 +166,7 @@ buttonsService.forEach(element => element.addEventListener("click", add));
 window.addEventListener("click", remove);
 
 for (let i = 0; i < pricesTitle.length; i++) {
-  pricesTitle[i].addEventListener("click", function() {
+  pricesTitle[i].addEventListener("click", function(event) {
     event.stopPropagation();
     console.log(this);
     var countOfActiveArrows = 0;
@@ -212,7 +214,8 @@ for (let i = 0; i < pricesTitle.length; i++) {
   });
 }
 
-function removePrice() {
+function removePrice(event) {
+  event.stopPropagation();
   for (let j = 0; j < pricesTitle.length; j++) {
     pricesTitle[j].classList.remove("arrow_focus");
     buttonsArrow[j].style.transform = "rotate(0deg)";
@@ -227,7 +230,12 @@ function removePrice() {
   }
 }
 
-window.addEventListener("click", removePrice);
+function preventClose(event) {
+  event.stopPropagation();
+}
+
+priceButton.forEach ((element) => element.addEventListener("click", preventClose));
+priceSection.addEventListener("click", removePrice);
 
 var towns = [
    city= { 
