@@ -1140,6 +1140,8 @@ main {
   color: #e06733;
 }
 .prices_section .prices_container .prices_block .choise_block .choise_price .price_button {
+  background-color: white;
+  display: block;
   width: 86px;
   padding: 3px 20px 3px 20px;
   border-radius: 10px;
