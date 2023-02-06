@@ -783,6 +783,7 @@ main {
 
         button {
           @include button2($font_inika, $orange, $bg_color);
+          transition: all 0.5s ease;
 
           /*&:hover {
             @include buttonhover($orange, $white);

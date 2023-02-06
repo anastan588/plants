@@ -812,6 +812,7 @@ main {
   border-color: #e06733;
   border-radius: 5px;
   background-color: #edf2ec;
+  transition: all 0.5s ease;
   /*&:hover {
     @include buttonhover($orange, $white);
   }
